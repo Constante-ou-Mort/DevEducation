@@ -160,6 +160,7 @@ namespace Lesson7
                 WriteLine("You are not logged in the system.");
         }
 
+
         private void AddDefaultUsers()
         {
             _users.Add(new User("admin", "admin", Role.Admin));
