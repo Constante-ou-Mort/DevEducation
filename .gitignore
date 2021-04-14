@@ -1,0 +1,46 @@
+#*.feature.cs
+
+*.xlsx
+*.pdf
+XrayReport.json
+debug/
+release/
+bin/
+obj/
+packages/
+logs/
+ExtentReport
+**/allure-results
+*.user
+*.suo
+*.pdb
+*.*sdf
+*.*.config
+*.dbmdl
+*.log
+*.tlog
+*.feature.cs
+*.obj
+*.cache
+*.jfm
+UpgradeLog*.htm
+*.csproj.DotSettings
+#*.bat
+.idea/
+.editorconfig
+
+Sources/AcceptanceTests/Reports
+
+# Visual Studio 2015 cache/options directory
+.vs/
+
+# to avoid populating of system-specific settings
+#App.config
+
+# Visual C++ cache files
+*.VC.db
+*.VC.VC.opendb
+
+*TestResult.xml
+*RunApiTests.bat
+*RunAcceptanceTests.bat
