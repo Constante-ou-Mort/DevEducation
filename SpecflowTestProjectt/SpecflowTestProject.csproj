@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Steps\API\" />
-    <Folder Include="Steps\UI\" />
+    <ProjectReference Include="..\NewBookModelsApiTests\NewBookModelsApiTests.csproj" />
+    <ProjectReference Include="..\SeleniumTests\SeleniumTests.csproj" />
   </ItemGroup>
 
 </Project>
