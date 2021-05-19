@@ -4,10 +4,16 @@ Feature: Login
 	As a client of NewBookModels
 	I want to be logged in NewBookModels
 
-Scenario: It is possible to login in NewBookModels with valid data
+Scenario Outline: It is possible to login in NewBookModels with valid data
 	Given Client is created
 	And Sign in page is opened
-	When I input email of created client in email field
-	And I input password of created client in password field
-	And I click Log in button
-	Then I successfully logged in NewBookModels as created client
+	When I login with data
+	| email   | password   |
+	| <email> | <password> |
+	Then Successfully logged in NewBookModels as created client
+Examples:
+	| email  | password |
+	| asdasd | asd      |
+	| asdasd | asd      |
+	| asd    | asd      |
+	| 343324 | asd      |
