@@ -1,7 +1,9 @@
-﻿using NewBookModelsApiTests.Models.Auth;
+﻿using NUnit;
+using NewBookModelsApiTests.Models.Auth;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
 using TechTalk.SpecFlow;
+using NUnit.Framework;
 
 namespace SpecflowTestProject.Steps.UI
 {
@@ -42,6 +44,18 @@ namespace SpecflowTestProject.Steps.UI
         public void WhenIClickLogInButton()
         {
             _singInPage.ClickLoginButton();
+        }
+
+        [When(@"I input '(.*)' in email field")]
+        public void WhenIInputInvalidEmail(string email)
+        {
+            _singInPage.SetEmail(email);
+        }
+
+        [Then(@"I see error message - '(.*)' on the Sign In page")]
+        public void ThenISeeErrorMessageOnSignInPage(string message)
+        {
+            Assert.AreEqual(message, _singInPage.GetErrorEmailMessage());
         }
     }
 }
