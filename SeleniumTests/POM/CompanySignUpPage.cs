@@ -15,5 +15,12 @@ namespace SeleniumTests.POM
         {
             return true;
         }
+        
+        public bool IsErrorDisplayd()
+        {
+            var element = _webDriver.FindElements(By.XPath("[class^=FormErrorText__error]"));
+            var result = element[2].Displayed;
+            return result;
+        }
     }
 }
