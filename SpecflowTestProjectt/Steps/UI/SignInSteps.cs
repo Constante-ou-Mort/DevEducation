@@ -73,7 +73,6 @@ namespace SpecflowTestProject.Steps.UI
         {
             Assert.AreEqual(invalidPasswordMessage, _singInPage.GetInvalidPasswordMessage());
         }
-
         public class LoginModel
         {
             public string Email{ get; set; }

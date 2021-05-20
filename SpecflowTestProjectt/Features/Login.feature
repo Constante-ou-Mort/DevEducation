@@ -28,10 +28,11 @@ Scenario Outline: It is impossible to login in NewBookModels with invalid data
 	And <invalidEmailmessage> invalid email message is displayed
 	And <invalidPasswordMessage> invalid password message is displayed
 Examples:
-	| email    | password | invalidEmailmessage | invalidPasswordMessage |
-	| asdasd   |          | Invalid Email       | Required               |
-	|          | asd      | Required            |                        |
-	| asd      | asd      | Invalid Email       |                        |
-	| 343324@  | asd      | Invalid Email       |                        |
-	| qwrw.com | asd      | Invalid Email       |                        |
-	|          |          | Required            | Required               |
+	| email       | password | invalidEmailmessage | invalidPasswordMessage |
+	| asdasd      |          | Invalid Email       | Required               |
+	|             | asd      | Required            |                        |
+	| asd         | asd      | Invalid Email       |                        |
+	| 343324@     | asd      | Invalid Email       |                        |
+	| qwrw.com    | asd      | Invalid Email       |                        |
+	|             |          | Required            | Required               |
+	| asd@sdf.com |          |                     | Required               |
