@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using NewBookModelsApiTests.Models.Auth;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
 using TechTalk.SpecFlow;
@@ -55,12 +56,24 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.ClickLoginButton();
         }
 
+        [Then(@"Unsuccessfuly login in NewBookModels as created client")]
+        public void ThenSuccessfullyLoggedInNewBookModelAsCreatedClient()
+        {
+            Assert.IsTrue(_singInPage.IsSignInPageIsOpen());
+        }
+
+        [Then(@"(.*) exception message is displayed")]
+        public void ThenMessageExceptionMessageIsDisplayed(string message)
+        {
+            Assert.AreEqual(message, _singInPage.GetInvalidEmailMessage());
+        }
+
+
+
         public class LoginModel
         {
             public string Email{ get; set; }
             public string Password { get; set; }
-        }
-
-        
+        }    
     }
 }
