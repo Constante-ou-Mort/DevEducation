@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace SeleniumTests.POM
 {
@@ -10,7 +11,7 @@ namespace SeleniumTests.POM
         private static readonly By _passwordField = By.CssSelector("input[type=password]");
         private static readonly By _loginButton = By.CssSelector("[class^=SignInForm__submitButton]");
         private static readonly By _accountBlockMessage = By.XPath("//*[contains(@class, 'SignInForm__submitButton')]/../../div[contains(@class,'PageForm')][last()]");
-
+        private static By _exceptionInvalidData = By.XPath("//*[text()='Please enter a correct email and password.']");
         public SingInPage(IWebDriver webDriver)
         {
             _webDriver = webDriver;
@@ -28,6 +29,11 @@ namespace SeleniumTests.POM
             return this;
         }
 
+        public double GetExceptionInvalidData()
+        {
+            throw new NotImplementedException();
+        }
+
         public SingInPage SetPassword(string password)
         {
             _webDriver.FindElement(_passwordField).SendKeys(password);
@@ -39,5 +45,21 @@ namespace SeleniumTests.POM
 
         public string GetUserAccountBlockMessage() => 
             _webDriver.FindElement(_accountBlockMessage).Text;
+        public string GetInvalidEmailMessage()
+        {
+            return _webDriver.FindElements(_invalidMessages)[0].Text;
+        }
+
+        public string GetInvalidPasswordMessage()
+        {
+            return _webDriver.FindElements(_invalidMessages)[1].Text;
+        }
+
+        public bool IsSignInPageIsOpen()
+        {
+            if (_webDriver.Url == "https://newbookmodels.com/auth/signin")
+                return true;
+            return false;
+        }
     }
 }

@@ -26,11 +26,11 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.OpenPage();
         }
 
-        [When(@"I input email of created client in email field")]
-        public void WhenIInputEmailOfCreatedClientInEmailField()
+        [When(@"I enter (.*) in Login field")]
+        public void WhenIInputEmailOfCreatedClientInEmailField(string email)
         {
-            var user = _scenarioContext.Get<ClientAuthModel>(Context.User);
-            _singInPage.SetEmail(user.User.Email);
+            
+            _singInPage.SetEmail(email);
         }
 
         [When(@"I input password of created client in password field")]
@@ -39,28 +39,11 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.SetPassword(Constants.Password);
         }
 
-        [When(@"I click Log in button")]
+        [When(@"I click log in button")]
         public void WhenIClickLogInButton()
         {
             _singInPage.ClickLoginButton();
         }
-
-        [When(@"I login with data")]
-        public void ILoginWithData(Table table)
-        {
-            var loginModels = table.CreateSet<LoginModel>().ToList();
-
-            _singInPage.SetEmail(loginModels[0].Email);
-            _singInPage.SetPassword(loginModels[0].Password);
-            _singInPage.ClickLoginButton();
-        }
-
-        public class LoginModel
-        {
-            public string Email{ get; set; }
-            public string Password { get; set; }
-        }
-
         
     }
 }

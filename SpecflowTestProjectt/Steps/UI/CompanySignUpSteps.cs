@@ -19,10 +19,10 @@ namespace SpecflowTestProject.Steps.UI
             _companySignUpPage = new CompanySignUpPage(_webDriver);
         }
 
-        [Then(@"Successfully logged in NewBookModels as created client")]
+        [Then(@"Not registered in NewBookModels as a created client")]
         public void ThenSuccessfullyLoggedInNewBookModelAsCreatedClient()
         {
-            Assert.IsTrue(_companySignUpPage.IsPageTitleVisible());
+            Assert.IsFalse(_companySignUpPage.IsPageTitleVisible());
         }
     }
 }

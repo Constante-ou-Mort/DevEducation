@@ -15,5 +15,9 @@ namespace SeleniumTests.POM
         {
             return true;
         }
+        public bool IsExceptionMessageVisible()
+        {
+            return true;
+        }
     }
 }
