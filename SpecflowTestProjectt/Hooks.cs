@@ -26,13 +26,13 @@ namespace SpecflowTestProject
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(60);
-            _scenarioContext.Add(Context.WebDriver, driver);
+            _scenarioContext.Add(Constants.WebDriver, driver);
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            _scenarioContext.Get<IWebDriver>(Context.WebDriver).Quit();
+            _scenarioContext.Get<IWebDriver>(Constants.WebDriver).Quit();
         }
     }
 }

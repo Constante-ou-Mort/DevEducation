@@ -13,16 +13,10 @@ namespace SpecflowTestProject
             _scenarioContext = scenarioContext;
         }
 
-        [StepArgumentTransformation("default client password")]
+        [StepArgumentTransformation("unique_email")]
         public string GetDefaultClientPassword()
         {
-            return Constants.Password;
-        }
-
-        [StepArgumentTransformation("current client email")]
-        public string GetCurrentClientEmail()
-        {
-            return _scenarioContext.Get<ClientAuthModel>(Context.User).User.Email;
+            return Constants.Email;
         }
     }
 }

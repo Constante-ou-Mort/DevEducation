@@ -25,7 +25,11 @@ Scenario Outline: It is impossible to login in NewBookModels with invalid data
 	When I login with data
 	| email   | password   |
 	| <email> | <password> |
-	Then exception message <message> is displayed
+	Then exception message 'Invalid Email' is displayed
 Examples:
-	| email  | password | message       |
-	| asdasd | asd      | Invalid Email |
+	| email              | password |
+	| asdasd             | asd      |
+	| /                  |          |
+	| .                  | фпрвирв  |
+	| adsghsf@@gmail.com | 1        |
+

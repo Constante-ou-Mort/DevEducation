@@ -27,7 +27,7 @@ namespace SpecflowTestProject.Steps.API
                 {"phone_number", "3453453454"}
             });
 
-            _scenarioContext.Add(Context.User, createUser);
+            _scenarioContext.Add(Constants.User, createUser);
         }
     }
 }
