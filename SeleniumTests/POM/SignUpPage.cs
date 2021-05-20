@@ -10,7 +10,7 @@ namespace SeleniumTests.POM
 {
     public class SignUpPage
     {
-        private readonly IWebDriver _webDriver;
+        public readonly IWebDriver _webDriver;
 
         private static readonly By _firstName = By.CssSelector("[name= first_name]");
         private static readonly By _lastName = By.CssSelector("[name= last_name]");
@@ -29,6 +29,10 @@ namespace SeleniumTests.POM
         {
             _webDriver.Navigate().GoToUrl("https://newbookmodels.com/join");
             return this;
+        }
+        public string GetUrl()
+        {
+            return _webDriver.Url;
         }
         public SignUpPage SetFirstName(string firstNane)
         {
