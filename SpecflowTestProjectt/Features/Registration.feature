@@ -10,5 +10,5 @@ I want to sign up to NewBookModels
         Given Sign up page is opened
         When I sign up with data
           | first_name   | last_name   | email         | password   | confirm_password | mobile     |
-          | <first_name> | <last_name> | 'UniqueEmail' | QWEqwe123@ | QWEqwe123@       | 5555555555 |
+          | Den | DenDen | 'UniqueEmail' | QWEqwe123@ | QWEqwe123@       | 5555555555 |
         Then Next page is opened

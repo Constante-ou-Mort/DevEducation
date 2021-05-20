@@ -21,6 +21,10 @@ namespace SpecflowTestProject.Steps.UI
         }
         
         [Given(@"Sign up page is opened")]
+        public void GivenSignUpPageIsOpened()
+        {
+            RegistrationPage.OpenPage();
+        }
         
     }
 }
