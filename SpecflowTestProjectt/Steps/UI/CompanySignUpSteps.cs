@@ -24,5 +24,11 @@ namespace SpecflowTestProject.Steps.UI
         {
             Assert.IsTrue(_companySignUpPage.IsPageTitleVisible());
         }
+
+        [Then(@"Invalid login message displayed")]
+        public void ThenInvalidLoginMessageDisplayed()
+        {
+            Assert.IsTrue(_companySignUpPage.IsInvalidLoginDisplayd());
+        }
     }
 }

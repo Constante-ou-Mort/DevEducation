@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading;
 using NewBookModelsApiTests.Models.Auth;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
@@ -33,6 +34,19 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.SetEmail(user.User.Email);
         }
 
+        [When(@"I enter (.*|^NULL$) in LogIn field")]
+        public void WhenIEnterLoginInLogInField(string login)
+        {
+            _singInPage.SetEmail(login);           
+        }
+
+
+        [When(@"I click on another area")]
+        public void WhenIClickOnAnotherArea()
+        {
+            _singInPage.SetPassword("123");
+        }
+
         [When(@"I input password of created client in password field")]
         public void WhenIInputPasswordOfCreatedClientInEmailField()
         {
@@ -54,6 +68,7 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.SetPassword(loginModels[0].Password);
             _singInPage.ClickLoginButton();
         }
+
 
         public class LoginModel
         {
