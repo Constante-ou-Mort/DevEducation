@@ -17,3 +17,18 @@ Examples:
 	| asdasd | asd      |
 	| asd    | asd      |
 	| 343324 | asd      |
+
+Scenario Outline:  Impossibility to login in NewBookModels with invalid data
+	Given Client is created
+	And Sign in page is opened
+	When I login with data
+	| email   | password   |
+	| <email> | <password> |
+	Then  An error message <message> is displayed in Login Page
+Examples:
+	| email             | password   | message                                   | 
+	| testrun@gmailcom  | 123qweQWE! | Invalid Email                             | 
+	| testrungmail.com  | 123qweQWE! | Invalid Email                             | 
+	|                   |            | Required                                  | 
+	|                   | 123qweQWE! | Required                                  | 
+	| t                 | q          | Invalid Email                             | 

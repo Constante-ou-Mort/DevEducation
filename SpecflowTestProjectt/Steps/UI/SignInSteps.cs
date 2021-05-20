@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using NewBookModelsApiTests.Models.Auth;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
 using TechTalk.SpecFlow;
@@ -26,19 +27,6 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.OpenPage();
         }
 
-        [When(@"I input email of created client in email field")]
-        public void WhenIInputEmailOfCreatedClientInEmailField()
-        {
-            var user = _scenarioContext.Get<ClientAuthModel>(Context.User);
-            _singInPage.SetEmail(user.User.Email);
-        }
-
-        [When(@"I input password of created client in password field")]
-        public void WhenIInputPasswordOfCreatedClientInEmailField()
-        {
-            _singInPage.SetPassword(Constants.Password);
-        }
-
         [When(@"I click Log in button")]
         public void WhenIClickLogInButton()
         {
@@ -53,6 +41,12 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.SetEmail(loginModels[0].Email);
             _singInPage.SetPassword(loginModels[0].Password);
             _singInPage.ClickLoginButton();
+        }
+
+        [Then(@"An error message (.*) is displayed in Login Page")]
+        public void ThenUnsuccessfullyLoggedInNewBookModelAsCreatedClient(string message)
+        {
+            Assert.AreEqual(message, _singInPage.MessageAboutInvalidData());
         }
 
         public class LoginModel
