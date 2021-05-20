@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using NewBookModelsApiTests.Models.Auth;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
 using TechTalk.SpecFlow;
@@ -8,12 +9,12 @@ using TechTalk.SpecFlow.Assist;
 namespace SpecflowTestProject.Steps.UI
 {
     [Binding]
-    public class SignInSteps
+    public class SignInInvalidSteps
     {
         private readonly ScenarioContext _scenarioContext;
         private readonly SingInPage _singInPage;
 
-        public SignInSteps(ScenarioContext scenarioContext)
+        public SignInInvalidSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             var webDriver = _scenarioContext.Get<IWebDriver>(Context.WebDriver);
@@ -26,17 +27,14 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.OpenPage();
         }
 
-        [When(@"I input email of created client in email field")]
-        public void WhenIInputEmailOfCreatedClientInEmailField()
+        [When(@"I login with data")]
+        public void ILoginWithData(Table table)
         {
-            var user = _scenarioContext.Get<ClientAuthModel>(Context.User);
-            _singInPage.SetEmail(user.User.Email);
-        }
+            var loginModels = table.CreateSet<LoginModel>().ToList();
 
-        [When(@"I input password of created client in password field")]
-        public void WhenIInputPasswordOfCreatedClientInEmailField()
-        {
-            _singInPage.SetPassword(Constants.Password);
+            _singInPage.SetEmail(loginModels[0].Email);
+            _singInPage.SetPassword(loginModels[0].Password);
+            _singInPage.ClickLoginButton(); 
         }
 
         [When(@"I click Log in button")]
@@ -45,20 +43,17 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.ClickLoginButton();
         }
 
-        [When(@"I login with data")]
-        public void ILoginWithData(Table table)
+        [Then(@"An error message (.*) is displayed in Login Page")]
+        public void ThenUnsuccessfullyLoggedInNewBookModelAsCreatedClient(string message)
         {
-            var loginModels = table.CreateSet<LoginModel>().ToList();
-
-            _singInPage.SetEmail(loginModels[0].Email);
-            _singInPage.SetPassword(loginModels[0].Password);
-            _singInPage.ClickLoginButton();
+            Assert.AreEqual(message, _singInPage.MessageAboutInvalidData());
         }
+
 
         public class LoginModel
         {
-            public string Email{ get; set; }
+            public string Email { get; set; }
             public string Password { get; set; }
-        }        
+        }
     }
 }
