@@ -17,3 +17,15 @@ Examples:
 	| asdasd | asd      |
 	| asd    | asd      |
 	| 343324 | asd      |
+
+@Negative
+Scenario Outline: It is impossible to login in NewBookModels with invalid data
+	Given Client is created
+	And Sign in page is opened
+	When I login with data
+	| email   | password   |
+	| <email> | <password> |
+	Then exception message <message> is displayed
+Examples:
+	| email  | password | message       |
+	| asdasd | asd      | Invalid Email |

@@ -10,6 +10,7 @@ namespace SeleniumTests.POM
         private static readonly By _passwordField = By.CssSelector("input[type=password]");
         private static readonly By _loginButton = By.CssSelector("[class^=SignInForm__submitButton]");
         private static readonly By _accountBlockMessage = By.XPath("//*[contains(@class, 'SignInForm__submitButton')]/../../div[contains(@class,'PageForm')][last()]");
+        private static By _exceptionInvalidData = By.XPath("//*[text()='Please enter a correct email and password.']");
 
         public SingInPage(IWebDriver webDriver)
         {
@@ -39,5 +40,8 @@ namespace SeleniumTests.POM
 
         public string GetUserAccountBlockMessage() => 
             _webDriver.FindElement(_accountBlockMessage).Text;
+
+        public string GetExceptionInvalidData() => 
+            _webDriver.FindElement(_exceptionInvalidData).Text;
     }
 }
