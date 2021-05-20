@@ -26,9 +26,9 @@ namespace SpecflowTestProject.Steps.UI
         }
         
         [Then(@"Error massage with text '(.*)' for (email|password) field")]
-        public void ThenTheErrorMassageIsShowed()
+        public void ThenTheErrorMassageIsShowed(out string errorMessage)
         {
-            if (_companySignUpPage.IsEmailErrorDisplayd(out string errorMessage))
+            if (_companySignUpPage.IsEmailErrorDisplayd(out errorMessage))
             {
                 Assert.AreEqual("Invalid Email", errorMessage);
             }

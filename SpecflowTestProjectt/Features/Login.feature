@@ -31,8 +31,8 @@ Scenario Outline: It is impossible to login in NewBookModels with invalid data
     Then Error massage with text 'message' for email field
 
     Examples:
-      | email          | password |message       |
-      | test@gmail | 12333    |Invalid Email |
-      | asdasd         | asdASD2@ |Required      |
-      | asd            | asd      |Required      |
-      | 343324         | asd      |Required      |
+      | email      | password | message       |
+      | test@gmail | 12333    | Invalid Email |
+      | asdasd     | asdASD2@ | Required      |
+      | asd        | asd      | Required      |
+      | 343324     | asd      | Required      |
