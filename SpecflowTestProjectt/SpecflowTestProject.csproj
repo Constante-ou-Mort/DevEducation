@@ -22,4 +22,8 @@
     <ProjectReference Include="..\SeleniumTests\SeleniumTests.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\NewFolder\" />
+  </ItemGroup>
+
 </Project>

@@ -26,12 +26,9 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.OpenPage();
         }
 
-        [When(@"I login with data")]
-        public void ILoginWithData(Table table)
+        [When(@"I login with email (.*) and password (.*)")]
+        public void ILoginWithData(Table table, string email, string password)
         {
-            var email = table.Rows[0]["email"];
-            var password = table.Rows[0]["password"];
-
             _singInPage.SetEmail(email);
             _singInPage.SetPassword(password);
             _singInPage.ClickLoginButton();

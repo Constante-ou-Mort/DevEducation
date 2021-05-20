@@ -22,10 +22,10 @@ Examples:
 Scenario Outline: It is impossible to login in NewBookModels with invalid data
 	Given Client is created
 	And Sign in page is opened
-	When I login with data
+	When I login with email <email> and password <password>
 	| email   | password   |
 	| <email> | <password> |
-	Then exception message 'Invalid Email' is displayed
+	Then exception message 'Invalid Email' is displayed on sign in page
 Examples:
 	| email              | password |
 	| asdasd             | asd      |
