@@ -18,7 +18,7 @@ namespace SpecflowTestProject.Steps.API
             _scenarioContext = scenarioContext;
         }
 
-        [When(@"I send POST request client/change_email/ with new email '(.*)'")]
+        [When(@"I send POST request client/change_email/ with (.*)")]
         public void WhenSendChangeEmailRequestWithValidData(string newEmail)
         {
             var user = _scenarioContext.Get<ClientAuthModel>(Context.User);

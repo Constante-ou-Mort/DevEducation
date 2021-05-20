@@ -6,7 +6,7 @@ Feature: AccountSettings
 
 Scenario: It is possible to change client email with valid data in NewBookModels Account
 	Given Client is created
-	When I send POST request client/change_email/ with new email 'kthfgs@gmail.com'
+	When I send POST request client/change_email/ with new client email
 	Then Client email was successfully changed in NewBookModels Account
 
 Scenario: It is possible to change client phone number with valid data in NewBookModels Account
