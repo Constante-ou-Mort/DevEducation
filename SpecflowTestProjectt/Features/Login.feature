@@ -1,19 +1,38 @@
-﻿@login @ui
+﻿@login
+@ui
 Feature: Login
-	In order to login in NewBookModels
-	As a client of NewBookModels
-	I want to be logged in NewBookModels
+In order to login in NewBookModels
+As a client of NewBookModels
+I want to be logged in NewBookModels
 
 Scenario Outline: It is possible to login in NewBookModels with valid data
-	Given Client is created
-	And Sign in page is opened
-	When I login with data
-	| email   | password   |
-	| <email> | <password> |
-	Then Successfully logged in NewBookModels as created client
-Examples:
-	| email  | password |
-	| asdasd | asd      |
-	| asdasd | asd      |
-	| asd    | asd      |
-	| 343324 | asd      |
+    Given Client is created
+    And Sign in page is opened
+    When I login with data
+      | email   | password   |
+      | <email> | <password> |
+    Then Successfully logged in NewBookModels as created client
+
+    Examples:
+      | email  | password |
+      | asdasd | asd      |
+      | asdasd | asd      |
+      | asd    | asd      |
+      | 343324 | asd      |
+
+    
+@negative
+Scenario Outline: It is impossible to login in NewBookModels with invalid data
+    Given Client is created
+    And Sign in page is opened
+    When I login with data
+      | email   | password   |
+      | <email> | <password> |
+    Then Error massage with text 'message' for email field
+
+    Examples:
+      | email          | password |message       |
+      | test@gmail | 12333    |Invalid Email |
+      | asdasd         | asdASD2@ |Required      |
+      | asd            | asd      |Required      |
+      | 343324         | asd      |Required      |

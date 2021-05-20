@@ -24,5 +24,23 @@ namespace SpecflowTestProject.Steps.UI
         {
             Assert.IsTrue(_companySignUpPage.IsPageTitleVisible());
         }
+        
+        [Then(@"Error massage with text '(.*)' for (email|password) field")]
+        public void ThenTheErrorMassageIsShowed()
+        {
+            if (_companySignUpPage.IsEmailErrorDisplayd(out string errorMessage))
+            {
+                Assert.AreEqual("Invalid Email", errorMessage);
+            }
+            else if (_companySignUpPage.IsPasswordErrorDisplayd(out errorMessage))
+            {
+                Assert.AreEqual("Required", errorMessage);
+            }
+            else if (_companySignUpPage.IsMainErrorDisplayd(out errorMessage))
+            {
+                Assert.AreEqual("Please enter a correct email and password.",errorMessage);
+            }
+            Assert.Pass();
+        }
     }
 }
