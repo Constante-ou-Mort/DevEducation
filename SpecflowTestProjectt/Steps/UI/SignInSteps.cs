@@ -56,19 +56,23 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.ClickLoginButton();
         }
 
-        [Then(@"Unsuccessfuly login in NewBookModels as created client")]
+        [Then(@"Unsuccessfuly login in NewBookModels with invalid data")]
         public void ThenSuccessfullyLoggedInNewBookModelAsCreatedClient()
         {
             Assert.IsTrue(_singInPage.IsSignInPageIsOpen());
         }
 
-        [Then(@"(.*) exception message is displayed")]
-        public void ThenMessageExceptionMessageIsDisplayed(string message)
+        [Then(@"(.*) invalid email message is displayed")]
+        public void ThenInvalidEmailMessageIsDisplayed(string invalidEmailmessage)
         {
-            Assert.AreEqual(message, _singInPage.GetInvalidEmailMessage());
+            Assert.AreEqual(invalidEmailmessage, _singInPage.GetInvalidEmailMessage());
         }
 
-
+        [Then(@"(.*) invalid password message is displayed")]
+        public void ThenInvalidPasswordMessageIsDisplayed(string invalidPasswordMessage)
+        {
+            Assert.AreEqual(invalidPasswordMessage, _singInPage.GetInvalidPasswordMessage());
+        }
 
         public class LoginModel
         {

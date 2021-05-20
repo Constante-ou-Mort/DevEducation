@@ -24,12 +24,13 @@ Scenario Outline: It is impossible to login in NewBookModels with invalid data
 	When I login with data
 	| email   | password   |
 	| <email> | <password> |
-	Then Unsuccessfuly login in NewBookModels as created client
-	And <message> exception message is displayed
+	Then Unsuccessfuly login in NewBookModels with invalid data
+	And <invalidEmailmessage> invalid email message is displayed
+	And <invalidPasswordMessage> invalid password message is displayed
 Examples:
-	| email    | password | message       |
-	| asdasd   |          | Invalid Email |
-	|          | asd      | Required      |
-	| asd      | asd      | Invalid Email |
-	| 343324@  | asd      | Invalid Email |
-	| qwrw.com | asd      | Invalid Email |
+	| email    | password | invalidEmailmessage | invalidPasswordMessage |
+	| asdasd   |          | Invalid Email       | Required               |
+	|          | asd      | Required            |                        |
+	| asd      | asd      | Invalid Email       |                        |
+	| 343324@  | asd      | Invalid Email       |                        |
+	| qwrw.com | asd      | Invalid Email       |                        |
