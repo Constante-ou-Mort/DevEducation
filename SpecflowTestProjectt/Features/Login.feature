@@ -34,3 +34,4 @@ Examples:
 	| asd      | asd      | Invalid Email       |                        |
 	| 343324@  | asd      | Invalid Email       |                        |
 	| qwrw.com | asd      | Invalid Email       |                        |
+	|          |          | Required            | Required               |
