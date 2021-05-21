@@ -11,8 +11,8 @@ Scenario: It is possible change email to valid email in account page in NewBookM
 	When I open edit email adress block
 	And I input '<password>' in Current Password field
 	And I input '<newEmail>' in New E-mail Address field
-	And I save schanges in edit email adress block
-	Then Primary Account Holder Name is changed to '<newEmail>'
+	And I save changes in edit email adress block
+	Then Primary Account Holder Name is changed to '<usedUniqueEmail>'
 Examples:
-	| password                | newEmail    |
-	| defailt client password | uniqueEmail |
+	| password                | newEmail    | usedUniqueEmail |
+	| default client password | uniqueEmail | usedUniqueEmail |

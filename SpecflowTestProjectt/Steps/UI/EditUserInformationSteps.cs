@@ -51,7 +51,7 @@ namespace SpecflowTestProject.Steps.UI
             inputEmailField.SendKeys(newEmail);
         }
 
-        [When(@"I save schanges in edit email adress block")]
+        [When(@"I save changes in edit email adress block")]
         public void WhenISaveSchanges()
         {
             _webDriver.FindElement(By.CssSelector("nb-account-info-email-address .button")).Click();
@@ -59,12 +59,12 @@ namespace SpecflowTestProject.Steps.UI
         }
 
         [Then(@"Primary Account Holder Name is changed to '(.*)'")]
-        public void ThenPrimaryAccountHolderNameIsChangedTo(string newPrimaryAccountHolderName)
+        public void ThenPrimaryAccountHolderNameIsChangedTo(string email)
         {
             var grayElement = _webDriver.FindElement(By.CssSelector(".paragraph_type_gray div div span"));
             var actualString = grayElement.Text.Trim();
 
-            Assert.AreEqual(_scenarioContext.Get<ClientAuthModel>(Context.User).User.Email, actualString);
+            Assert.AreEqual(email, actualString);
         }
 
     }

@@ -8,6 +8,7 @@ namespace SpecflowTestProject
     public class ArgTransforms
     {
         private readonly ScenarioContext _scenarioContext;
+        private string usedUniqueEmail;
 
         public ArgTransforms(ScenarioContext scenarioContext)
         {
@@ -27,9 +28,16 @@ namespace SpecflowTestProject
         }
 
         [StepArgumentTransformation("uniqueEmail")]
-        public string GetUniqueEmailPassword()
+        public string GetUniqueEmail()
         {
-            return $"tribianidylan{DateTime.Now:yyyyMMddhhmmss}@gmail.com";
+            usedUniqueEmail = $"tribianidylan{DateTime.Now:yyyyMMddhhmmss}@gmail.com";
+            return usedUniqueEmail;
+        }
+
+        [StepArgumentTransformation("usedUniqueEmail")]
+        public string GetUsedUniqueEmail()
+        {
+            return usedUniqueEmail;
         }
     }
 }
