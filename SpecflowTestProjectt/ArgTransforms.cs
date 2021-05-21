@@ -26,7 +26,7 @@ namespace SpecflowTestProject
             return _scenarioContext.Get<ClientAuthModel>(Context.User).User.Email;
         }
 
-        [StepArgumentTransformation("unique email")]
+        [StepArgumentTransformation("uniqueEmail")]
         public string GetUniqueEmailPassword()
         {
             return $"tribianidylan{DateTime.Now:yyyyMMddhhmmss}@gmail.com";

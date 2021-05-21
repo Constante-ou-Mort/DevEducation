@@ -20,7 +20,7 @@ namespace SpecflowTestProject
 
         [BeforeScenario("ui")]
         public void BeforeScenario()
-        {
+        {            
             new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
             var driver = new ChromeDriver();
             driver.Manage().Window.Maximize();

@@ -1,4 +1,6 @@
 ﻿using NewBookModelsApiTests.ApiRequests.Auth;
+using NewBookModelsApiTests.Models.Auth;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
@@ -9,10 +11,13 @@ namespace SpecflowTestProject.Steps.API
     public class AuthSingInSteps
     {
         private readonly ScenarioContext _scenarioContext;
+        private readonly IWebDriver _webDriver;
+
 
         public AuthSingInSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
+            _webDriver = _scenarioContext.Get<IWebDriver>(Context.WebDriver);
         }
 
         [Given(@"Client is created")]
@@ -28,6 +33,15 @@ namespace SpecflowTestProject.Steps.API
             });
 
             _scenarioContext.Add(Context.User, createUser);
+            
+        }
+
+        [Given(@"Client is authorized")]
+        public void GivenClientIsAuthorized()
+        {
+           _webDriver.Navigate().GoToUrl("https://newbookmodels.com/auth/signin");
+           IJavaScriptExecutor js = (IJavaScriptExecutor)_webDriver;           
+           js.ExecuteScript($"localStorage.setItem('access_token','{_scenarioContext.Get<ClientAuthModel>(Context.User).TokenData.Token}')");
         }
     }
 }

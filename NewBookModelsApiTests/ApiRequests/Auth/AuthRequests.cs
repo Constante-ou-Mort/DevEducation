@@ -20,7 +20,7 @@ namespace NewBookModelsApiTests.ApiRequests.Auth
             var response = client.Execute(request);
             var createdUser = JsonConvert.DeserializeObject<ClientAuthModel>(response.Content);
 
-            return createdUser;
+            return createdUser;            
         }
     }
 }

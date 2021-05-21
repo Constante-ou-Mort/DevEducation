@@ -11,5 +11,5 @@ Scenario Outline: It is possible to register in NewBookModels with valid data
 	| <firstName> | <lastName> | <email> | <password> | <password>      | <mobile> |
 	Then Succesfully registration in NewBookModels
 Examples:
-	| firstName | lastName | email                     | password      | confirmPassword | mobile     |
-	| John      | Tribiani | sdflkhj123sd22fkjh@sdf.com | 1Qwerty(46109 | 1Qwerty(46109   | 1231231212 |
+	| firstName | lastName | email                       | password      | confirmPassword | mobile     |
+	| John      | Tribiani | gsdgsge2352362346@gmail.com | 1Qwerty(46109 | 1Qwerty(46109   | 1231231212 |
