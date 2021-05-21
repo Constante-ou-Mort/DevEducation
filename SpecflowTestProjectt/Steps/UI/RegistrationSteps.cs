@@ -87,5 +87,12 @@ namespace SpecflowTestProject.Steps.UI
             wait.Until(ExpectedConditions.UrlMatches("https://newbookmodels.com/join/company"));
             Assert.AreEqual("https://newbookmodels.com/join/company", actualUrl);
         }
+
+        [Then(@"Account is not created")]
+        public void ThenAccountIsNotCreated()
+        {
+            var actualUrl = _singUpPage.GetUrl();
+            Assert.AreEqual("https://newbookmodels.com/join", actualUrl);
+        }
     }
 }

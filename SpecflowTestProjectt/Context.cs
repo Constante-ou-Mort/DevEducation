@@ -1,4 +1,7 @@
-﻿namespace SpecflowTestProject
+﻿using NewBookModelsApiTests.Models.Auth;
+using SpecflowTestProject.Steps.API;
+
+namespace SpecflowTestProject
 {
     public static class Context
     {

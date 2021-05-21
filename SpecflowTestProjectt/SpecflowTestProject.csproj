@@ -29,6 +29,9 @@
     <Compile Update="Features\Registration.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Features\RegistrationAPI.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +42,10 @@
     <SpecFlowFeatureFiles Update="Features\Registration.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Registration.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\RegistrationAPI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RegistrationAPI.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
   </ItemGroup>
 
