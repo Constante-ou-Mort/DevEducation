@@ -1,9 +1,11 @@
 ﻿using NewBookModelsApiTests.Models.Auth;
 using Newtonsoft.Json;
+using NUnit.Framework;
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
@@ -51,7 +53,21 @@ namespace SpecflowTestProject.Steps.API
         [When(@"I send valid registration request ")]
         public void WhenISendValidRegistrationReques()
         {
-            var user = CreateUserViaApi();
+            var responseSignUpModel = CreateUserViaApi();
+            _scenarioContext.Add("Response", responseSignUpModel);
+        }
+
+        [Then(@"The server should handle it and return a success status")]
+        public void ServerResponseForRegistration()
+        {
+            var actualResult = _scenarioContext.Get<ResponseModel<ClientAuthModel>>("Response");
+
+            Assert.Multiple(() =>
+           {
+               Assert.AreEqual(HttpStatusCode.OK, actualResult.Response.StatusCode);
+               Assert.AreEqual("Petter", actualResult.Model.User.FirstName);
+               Assert.AreEqual("Parker", actualResult.Model.User.LastName);
+           });
         }
     }
 }
