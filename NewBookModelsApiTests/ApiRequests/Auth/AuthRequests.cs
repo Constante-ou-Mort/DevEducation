@@ -8,7 +8,7 @@ namespace NewBookModelsApiTests.ApiRequests.Auth
 {
     public static class AuthRequests
     {
-        public static ClientAuthModel SendRequestClientSignUpPost(Dictionary<string, string> user)
+        public static ResponseModel<ClientAuthModel> SendRequestClientSignUpPost(Dictionary<string, string> user)
         {
             var client = new RestClient("https://api.newbookmodels.com/api/v1/auth/client/signup/");
             var request = new RestRequest(Method.POST);
@@ -20,7 +20,14 @@ namespace NewBookModelsApiTests.ApiRequests.Auth
             var response = client.Execute(request);
             var createdUser = JsonConvert.DeserializeObject<ClientAuthModel>(response.Content);
 
-            return createdUser;
+            return new ResponseModel<ClientAuthModel> { Model = createdUser, Response = response };
         }
+
+        public class ResponseModel<T>
+        {
+            public T Model { get; set; }
+            public IRestResponse Response { get; set; }
+        }
+
     }
 }

@@ -27,7 +27,7 @@ namespace SpecflowTestProject.Steps.UI
         }
 
         [When(@"I login with email (.*) and password (.*)")]
-        public void ILoginWithData(Table table, string email, string password)
+        public void ILoginWithData(string email, string password)
         {
             _singInPage.SetEmail(email);
             _singInPage.SetPassword(password);

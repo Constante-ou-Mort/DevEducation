@@ -6,7 +6,7 @@ Feature: SignUp
 
 @Positive
 Scenario Outline: It is possible to signup in NewBookModels with valid data
-	Given Sign  up page is opened
+	Given Sign up page is opened
 	When I registrate with data
 	| email   | password   | confirm_password | name   | last_name   | phone_number   |
 	| <email> | <password> | <password>       | <name> | <last_name> | <phone_number> |
