@@ -1,4 +1,5 @@
 ﻿using NewBookModelsApiTests.ApiRequests.Auth;
+using NewBookModelsApiTests.Models.Auth;
 using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
