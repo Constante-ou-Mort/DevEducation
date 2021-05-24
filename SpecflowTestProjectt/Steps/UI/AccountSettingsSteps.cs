@@ -1,9 +1,13 @@
 ﻿using NewBookModelsApiTests.Models.Auth;
 using OpenQA.Selenium;
-using SeleniumTests.POM;
 using TechTalk.SpecFlow;
 using NUnit.Framework;
-using SeleniumTests.ProfileTests;
+using RestSharp;
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.Threading;
+using SeleniumTests.POM.AccountSettings;
 
 namespace SpecflowTestProject.Steps.UI
 {
@@ -12,73 +16,85 @@ namespace SpecflowTestProject.Steps.UI
     {
         private readonly ScenarioContext _scenarioContext;
         private readonly IWebDriver _webDriver;
-        private readonly AccountSettingsPage _accountSettingsPage;
+        private readonly AccountInfoPage _accountInfoPage;
 
         public AccountSettingsSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             _webDriver = _scenarioContext.Get<IWebDriver>(Context.WebDriver);
-            _accountSettingsPage = new AccountSettingsPage(_webDriver);
+            _accountInfoPage = new AccountInfoPage(_webDriver);
         }
 
-        [Given(@"Client is authorized")]
+        [Given(@"Client is created and authorized")]
         public void GivenClientIsAuthorized()
         {
-            var user = CreateUserViaApi();
-            new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-            var driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(7);
-            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(60);
-            IJavaScriptExecutor js = driver;
+            var client = new RestClient("https://api.newbookmodels.com/api/v1/auth/client/signup/");
+            var request = new RestRequest(Method.POST);
+            var user = new Dictionary<string, string>
+            {
+                { "email", $"asda2sd2asd{DateTime.Now:ddyyyymmHHssmm}@asdasd.ert" },
+                { "first_name", "asdasdasd" },
+                { "last_name", "asdasdasd" },
+                { "password", "123qweQWE" },
+                { "phone_number", "3453453454" }
+            };
 
-            driver.Navigate().GoToUrl("https://newbookmodels.com/auth/signin");
+            request.AddHeader("content-type", "application/json");
+            request.AddJsonBody(user);
+            request.RequestFormat = DataFormat.Json;
 
-            js.ExecuteScript($"localStorage.setItem('access_token','{user.TokenData.Token}');");
+            var response = client.Execute(request);
+            var createdUser = JsonConvert.DeserializeObject<ClientAuthModel>(response.Content);
+            IJavaScriptExecutor js = (IJavaScriptExecutor)_webDriver;
 
-            driver.Navigate().GoToUrl("https://newbookmodels.com/account-settings/profile/edit");
+            _webDriver.Navigate().GoToUrl("https://newbookmodels.com/auth/signin");
+            js.ExecuteScript($"localStorage.setItem('access_token','{createdUser.TokenData.Token}');");
+
+            _scenarioContext.Add(Context.User, createdUser);
         }
 
         [Given(@"Account Settings page is opened")]
         public void GivenAccountSettingsPageIsOpened()
         {
-            _accountSettingsPage.OpenPage();
+            _accountInfoPage.OpenPage();
         }
 
         [When(@"I click on edit password button on Account Settings page")]
         public void WhenIClickEditPasswordButtonOnAccountSettingsPage()
         {
             var user = _scenarioContext.Get<ClientAuthModel>(Context.User);
-            _accountSettingsPage.ClickEditPasswordButton();
+            _accountInfoPage.ClickPasswordEditButton();
         }
 
         [When(@"I input client '(.*)' at Current password field in the Password Edit Block")]
         public void WhenIInputPasswordEditPasswordBlock(string currentPassword)
         {
-            _accountSettingsPage.SetCurrentPasswordEditPasswordBlock(currentPassword);
+            _accountInfoPage.SetCurrentPasswordEditPasswordBlock(currentPassword);
         }
 
         [When(@"I input new password '(.*)' at New password field in the Password Edit Block")]
         public void WhenIInputNewPasswordEditPasswordBlock(string newPassword)
         {
-            _accountSettingsPage.SetNewPasswordEditPasswordBlock(newPassword);
+            _accountInfoPage.SetNewPasswordEditPasswordBlock(newPassword);
         }
 
         [When(@"I input new password '(.*)' at New password confirm field in the Password Edit Block")]
         public void WhenIInputNewPasswordConfirmEditPasswordBlock(string newPasswordConfirm)
         {
-            _accountSettingsPage.SetNewPasswordConfirmEditPasswordBlock(newPasswordConfirm);
+            _accountInfoPage.SetNewPasswordConfirmEditPasswordBlock(newPasswordConfirm);
         }
 
         [When(@"I click Save changes button at at the Edit Password Block")]
         public void WhenIClickEditPasswordBlockSubmitButton()
         {
-            _accountSettingsPage.ClickEditPasswordBlockSubmitButton();
+            _accountInfoPage.ClickSaveChangesButtonEditPasswordBlock();
         }
 
         [Then(@"I see error message '(.*)' on the Account Settings page")]
         public void WhenIInputInvalidEmail(string message)
         {
-            Assert.AreEqual(message, _accountSettingsPage.SeeNotificationMessageInvalidOldPassword());
+            Thread.Sleep(7000);
+            Assert.AreEqual(message, _accountInfoPage.SeeNotificationMessageInvalidOldPassword());
         }
     }
 }
