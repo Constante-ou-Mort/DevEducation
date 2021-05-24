@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumTests.POM.AccountSettings
 {
@@ -11,7 +6,6 @@ namespace SeleniumTests.POM.AccountSettings
     {
         private readonly IWebDriver _webDriver;
 
-        
         private static readonly By _generalInformationEditButton = By.CssSelector("nb-account-info-general-information form div div nb-edit-switcher div[class ^= 'edit-switcher']");
         private static readonly By _generalInformationCancelEditButton = By.CssSelector("nb-account-info-general-information form div div nb-edit-switcher div[class ^= 'paragraph']");
         private static readonly By _firstNameFieldEditGeneralInformationBlock = By.CssSelector("nb-account-info-general-information common-input[formcontrolname = 'first_name'] input");
@@ -55,12 +49,90 @@ namespace SeleniumTests.POM.AccountSettings
             return this;
         }
 
-        public AccountInfoPage ClickEditPasswordButton()
+        public AccountInfoPage ClickGeneralInformationEditButton()
+        {
+            _webDriver.FindElement(_generalInformationEditButton).Click();
+            return this;
+        }
+
+        public AccountInfoPage ClickGeneralInformationCancelEditButton()
+        {
+            _webDriver.FindElement(_generalInformationCancelEditButton).Click();
+            return this;
+        }
+
+        public AccountInfoPage SetFirstNameGeneralInformationEditBlock(string firstName)
+        {
+            _webDriver.FindElement(_firstNameFieldEditGeneralInformationBlock).SendKeys(firstName);
+            return this;
+        }
+
+        public AccountInfoPage SetLastNameGeneralInformationEditBlock(string lastName)
+        {
+            _webDriver.FindElement(_lastNameFieldEditGeneralInformationBlock).SendKeys(lastName);
+            return this;
+        }
+
+        public AccountInfoPage SetCompanyLocationGeneralInformationEditBlock(string location)
+        {
+            _webDriver.FindElement(_companyLocationFieldEditGeneralInformationBlock).SendKeys(location);
+            _webDriver.FindElement(_companyLocationSelectEditGeneralInformationBlock).Click();
+            return this;
+        }
+
+        public AccountInfoPage SetIndustryInformationEditBlock(string industry)
+        {
+            _webDriver.FindElement(_industryFieldEditGeneralInformationBlock).SendKeys(industry);
+            return this;
+        }
+
+        public void ClickSaveChangesButtonGeneralInformationEditBlock()
+        {
+            _webDriver.FindElement(_saveChangesButtonEditGeneralInformationBlock).Click();
+            return;
+        }
+
+        public AccountInfoPage ClickEmailEditButton()
+        {
+            _webDriver.FindElement(_emailEditButton).Click();
+            return this;
+        }
+
+        public AccountInfoPage ClickEmailCancelEditButton()
+        {
+            _webDriver.FindElement(_emailCancelEditButton).Click();
+            return this;
+        }
+
+        public AccountInfoPage SetCurrentPasswordEmailEditBlock(string password)
+        {
+            _webDriver.FindElement(_currentPasswordFieldEditEmailBlock).SendKeys(password);
+            return this;
+        }
+
+        public AccountInfoPage SetNewEmailEmailEditBlock(string lastName)
+        {
+            _webDriver.FindElement(_newEmailEditFieldEmailBlock).SendKeys(lastName);
+            return this;
+        }
+
+        public void ClickSaveChangesButtonEmailEditBlock()
+        {
+            _webDriver.FindElement(_saveChangesButtonEditEmailBlock).Click();
+            return;
+        }
+
+        public AccountInfoPage ClickPasswordEditButton()
         {
             _webDriver.FindElement(_passwordEditButton).Click();
             return this;
         }
 
+        public AccountInfoPage ClickPasswordCancelEditButton()
+        {
+            _webDriver.FindElement(_passwordCancelEditButton).Click();
+            return this;
+        }
         public AccountInfoPage SetCurrentPasswordEditPasswordBlock(string currentPassword)
         {
             _webDriver.FindElement(_currentPasswordFieldEditPasswordBlock).SendKeys(currentPassword);
@@ -72,22 +144,57 @@ namespace SeleniumTests.POM.AccountSettings
             _webDriver.FindElement(_newPasswordFieldEditPasswordBlock).SendKeys(newPassword);
             return this;
         }
-
         public AccountInfoPage SetNewPasswordConfirmEditPasswordBlock(string newPasswordConfirm)
         {
             _webDriver.FindElement(_newPasswordConfirmationFieldEditPasswordBlock).SendKeys(newPasswordConfirm);
             return this;
         }
 
-        public void ClickEditPasswordBlockSubmitButton()
+        public void ClickSaveChangesButtonEditPasswordBlock()
         {
             _webDriver.FindElement(_saveChangesButtonEditPasswordBlock).Click();
+            return;
+        }
+
+        public AccountInfoPage ClickPhoneEditButton()
+        {
+            _webDriver.FindElement(_phoneEditButton).Click();
+            return this;
+        }
+
+        public AccountInfoPage ClickPhoneCancelEditButton()
+        {
+            _webDriver.FindElement(_phoneCancelEditButton).Click();
+            return this;
+        }
+
+        public AccountInfoPage SetCurrentPasswordEditPhoneBlock(string password)
+        {
+            _webDriver.FindElement(_currentPasswordFieldEditPhoneBlock).SendKeys(password);
+            return this;
+        }
+
+        public AccountInfoPage SetNewPhoneEditPhoneBlock(string phone)
+        {
+            _webDriver.FindElement(_newPhoneFieldEditPhoneBlock).SendKeys(phone);
+            return this;
+        }
+
+        public void ClickSaveChangesButtonEditPhoneBlock()
+        {
+            _webDriver.FindElement(_saveChangesButtonEditPhoneBlock).Click();
             return;
         }
 
         public string SeeNotificationMessageInvalidOldPassword()
         {
             return _webDriver.FindElement(_invalidPasswordNotification).Text;
+        }
+
+        public void ClickLogOutButton()
+        {
+            _webDriver.FindElement(_logOutButton).Click();
+            return;
         }
     }
 }
