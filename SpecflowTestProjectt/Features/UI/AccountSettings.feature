@@ -5,7 +5,7 @@ Feature: AccountSettings
 	I want to change my account in NewBookModels
 
 @positive
-Scenario Outline: It is possible to change client password in NewBookModels Account
+Scenario: It is possible to change client password in NewBookModels Account
 	Given Client is created and authorized
 	And Account Settings page is opened
 	When I click on edit password button on Account Settings page
@@ -15,8 +15,18 @@ Scenario Outline: It is possible to change client password in NewBookModels Acco
 	And I click Save changes button at at the Edit Password Block
 	Then Client password successfully changed on '!QA2wsxc' in NewBookModels Account
 
+@positive
+Scenario: It is possible to change client email in NewBookModels Account
+	Given Client is created and authorized
+	And Account Settings page is opened
+	When I click on edit email button on Account Settings page
+	And I input current client password at Current password field at the Email Edit Block
+	And I input jonson334dh@gmail.com at New email field at the Email Edit Block
+	And I click Save changes button at the Email Edit Block
+	Then Client email successfully changed on jonson334dh@gmail.com in NewBookModels Account
+
 @negative
-Scenario Outline: It is impossible to change client password with invalid current password in NewBookModels Account
+Scenario: It is impossible to change client password with invalid current password in NewBookModels Account
 	Given Client is created and authorized
 	And Account Settings page is opened
 	When I click on edit password button on Account Settings page

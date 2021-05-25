@@ -65,10 +65,22 @@ namespace SpecflowTestProject.Steps.UI
             _accountInfoPage.ClickPasswordEditButton();
         }
 
+        [When(@"I click on edit email button on Account Settings page")]
+        public void WhenIClickEditEmailButtonOnAccountSettingsPage()
+        {
+            _accountInfoPage.ClickEmailEditButton();
+        }
+
         [When(@"I input (.*) at Current password field in the Password Edit Block")]
         public void WhenIInputCurrentClientPasswordEditPasswordBlock(string currentPassword)
         {
             _accountInfoPage.SetCurrentPasswordEditPasswordBlock(currentPassword);
+        }
+
+        [When(@"I input (.*) at Current password field at the Email Edit Block")]
+        public void WhenIInputCurrentClientPasswordEditEmailBlock(string currentPassword)
+        {
+            _accountInfoPage.SetCurrentPasswordEmailEditBlock(currentPassword);
         }
 
         [When(@"I input new password '(.*)' at New password field in the Password Edit Block")]
@@ -76,6 +88,13 @@ namespace SpecflowTestProject.Steps.UI
         {
             _accountInfoPage.SetNewPasswordEditPasswordBlock(newPassword);
             _scenarioContext.Add(Context.ExpectedPassword, newPassword);
+        }
+
+        [When(@"I input (.*) at New email field at the Email Edit Block")]
+        public void WhenIInputNewEmailEditEmailBlock(string newEmail)
+        {
+            _accountInfoPage.SetNewEmailEmailEditBlock(newEmail);
+            _scenarioContext.Add(Context.ExpectedEmail, newEmail);
         }
 
         [When(@"I input new password '(.*)' at New password confirm field in the Password Edit Block")]
@@ -90,11 +109,24 @@ namespace SpecflowTestProject.Steps.UI
             _accountInfoPage.ClickSaveChangesButtonEditPasswordBlock();
         }
 
+        [When(@"I click Save changes button at the Email Edit Block")]
+        public void WhenIClickEditEmaildBlockSubmitButton()
+        {
+            _accountInfoPage.ClickSaveChangesButtonEmailEditBlock();
+        }
+
         [Then(@"Client password successfully changed on '(.*)' in NewBookModels Account")]
         public void ThenClientPasswordChanged(string password)
         {
             var expectedPassword = _scenarioContext.Get<string>(Context.ExpectedPassword);
             Assert.AreEqual(password, expectedPassword);
+        }
+
+        [Then(@"Client email successfully changed on (.*) in NewBookModels Account")]
+        public void ThenClientEmailChanged(string email)
+        {
+            var expectedEmail = _scenarioContext.Get<string>(Context.ExpectedEmail);
+            Assert.AreEqual(email, expectedEmail);
         }
 
         [Then(@"I see error message '(.*)' on the Account Settings page")]
