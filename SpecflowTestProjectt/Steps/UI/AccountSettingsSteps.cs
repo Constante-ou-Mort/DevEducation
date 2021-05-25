@@ -71,6 +71,12 @@ namespace SpecflowTestProject.Steps.UI
             _accountInfoPage.ClickEmailEditButton();
         }
 
+        [When(@"I click on edit phone button on Account Settings page")]
+        public void WhenIClickEditPhoneButtonOnAccountSettingsPage()
+        {
+            _accountInfoPage.ClickPhoneEditButton();
+        }
+
         [When(@"I input (.*) at Current password field in the Password Edit Block")]
         public void WhenIInputCurrentClientPasswordEditPasswordBlock(string currentPassword)
         {
@@ -81,6 +87,12 @@ namespace SpecflowTestProject.Steps.UI
         public void WhenIInputCurrentClientPasswordEditEmailBlock(string currentPassword)
         {
             _accountInfoPage.SetCurrentPasswordEmailEditBlock(currentPassword);
+        }
+
+        [When(@"I input (.*) at Current password field at the Phone Edit Block")]
+        public void WhenIInputCurrentClientPasswordEditPhoneBlock(string currentPassword)
+        {
+            _accountInfoPage.SetCurrentPasswordEditPhoneBlock(currentPassword);
         }
 
         [When(@"I input new password '(.*)' at New password field in the Password Edit Block")]
@@ -95,6 +107,13 @@ namespace SpecflowTestProject.Steps.UI
         {
             _accountInfoPage.SetNewEmailEmailEditBlock(newEmail);
             _scenarioContext.Add(Context.ExpectedEmail, newEmail);
+        }
+
+        [When(@"I input (.*) at New phone field at the Phone Edit Block")]
+        public void WhenIInputNewPhoneEditPhoneBlock(string newPhone)
+        {
+            _accountInfoPage.SetNewPhoneEditPhoneBlock(newPhone);
+            _scenarioContext.Add(Context.ExpectedPhoneNumber, newPhone);
         }
 
         [When(@"I input new password '(.*)' at New password confirm field in the Password Edit Block")]
@@ -115,6 +134,12 @@ namespace SpecflowTestProject.Steps.UI
             _accountInfoPage.ClickSaveChangesButtonEmailEditBlock();
         }
 
+        [When(@"I click Save changes button at the Phone Edit Block")]
+        public void WhenIClickEditPhonedBlockSubmitButton()
+        {
+            _accountInfoPage.ClickSaveChangesButtonEditPhoneBlock();
+        }
+
         [Then(@"Client password successfully changed on '(.*)' in NewBookModels Account")]
         public void ThenClientPasswordChanged(string password)
         {
@@ -127,6 +152,13 @@ namespace SpecflowTestProject.Steps.UI
         {
             var expectedEmail = _scenarioContext.Get<string>(Context.ExpectedEmail);
             Assert.AreEqual(email, expectedEmail);
+        }
+
+        [Then(@"Client phone successfully changed on (.*) in NewBookModels Account")]
+        public void ThenClientPhoneChanged(string phone)
+        {
+            var expectedPhone = _scenarioContext.Get<string>(Context.ExpectedPhoneNumber);
+            Assert.AreEqual(phone, expectedPhone);
         }
 
         [Then(@"I see error message '(.*)' on the Account Settings page")]

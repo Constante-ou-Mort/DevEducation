@@ -29,11 +29,11 @@ namespace SeleniumTests.POM.AccountSettings
         private static readonly By _newPasswordConfirmationFieldEditPasswordBlock = By.CssSelector("nb-account-info-password common-input[formcontrolname = newPasswordConfirmation] input");
         private static readonly By _saveChangesButtonEditPasswordBlock = By.CssSelector("nb-account-info-password common-button-deprecated button[type = 'submit']");
 
-        private static readonly By _phoneEditButton = By.CssSelector("nb-account-info-phone nb-edit-switcher div div]");
+        private static readonly By _phoneEditButton = By.CssSelector("nb-account-info-phone div[class ^= 'edit-switcher']");
         private static readonly By _phoneCancelEditButton = By.CssSelector("nb-account-info-phone div div nb-edit-switcher div[class ^= 'paragraph']");
         private static readonly By _currentPasswordFieldEditPhoneBlock = By.CssSelector("nb-account-info-phone common-input[formcontrolname ='password'] input");
         private static readonly By _newPhoneFieldEditPhoneBlock = By.CssSelector("nb-account-info-phone common-input-phone[formcontrolname ='phone_number'] input");
-        private static readonly By _saveChangesButtonEditPhoneBlock = By.CssSelector("nb-account-info-email-address common-button-deprecated button[type = 'submit']");
+        private static readonly By _saveChangesButtonEditPhoneBlock = By.CssSelector("nb-account-info-phone common-button-deprecated button[type = 'submit']");
 
         private static readonly By _invalidPasswordNotification = By.CssSelector("span[ class ^= 'header-notification']");
 
@@ -159,16 +159,16 @@ namespace SeleniumTests.POM.AccountSettings
             return;
         }
 
-        public AccountInfoPage ClickPhoneEditButton()
+        public void ClickPhoneEditButton()
         {
             _webDriver.FindElement(_phoneEditButton).Click();
-            return this;
+            return;
         }
 
-        public AccountInfoPage ClickPhoneCancelEditButton()
+        public void ClickPhoneCancelEditButton()
         {
             _webDriver.FindElement(_phoneCancelEditButton).Click();
-            return this;
+            return;
         }
 
         public AccountInfoPage SetCurrentPasswordEditPhoneBlock(string password)

@@ -25,6 +25,16 @@ Scenario: It is possible to change client email in NewBookModels Account
 	And I click Save changes button at the Email Edit Block
 	Then Client email successfully changed on jonson334dh@gmail.com in NewBookModels Account
 
+@positive
+Scenario: It is possible to change client phone in NewBookModels Account
+	Given Client is created and authorized
+	And Account Settings page is opened
+	When I click on edit phone button on Account Settings page
+	And I input current client password at Current password field at the Phone Edit Block
+	And I input new client phone at New phone field at the Phone Edit Block
+	And I click Save changes button at the Phone Edit Block
+	Then Client phone successfully changed on 3311550022 in NewBookModels Account
+
 @negative
 Scenario: It is impossible to change client password with invalid current password in NewBookModels Account
 	Given Client is created and authorized
@@ -36,3 +46,22 @@ Scenario: It is impossible to change client password with invalid current passwo
 	And I click Save changes button at at the Edit Password Block
 	Then I see error message 'Invalid old password.' on the Account Settings page
 
+@negative
+Scenario: It is impossible to change client email with invalid current password in NewBookModels Account
+	Given Client is created and authorized
+	And Account Settings page is opened
+	When I click on edit email button on Account Settings page
+	And I input 123 at Current password field at the Email Edit Block
+	And I input new client email at New email field at the Email Edit Block
+	And I click Save changes button at the Email Edit Block
+	Then I see error message 'Invalid old password.' on the Account Settings page
+
+@negative
+Scenario: It is impossible to change client phone with invalid current password in NewBookModels Account
+	Given Client is created and authorized
+	And Account Settings page is opened
+	When I click on edit phone button on Account Settings page
+	And I input 123 at Current password field at the Phone Edit Block
+	And I input new client phone at New phone field at the Phone Edit Block
+	And I click Save changes button at the Phone Edit Block
+	Then I see error message 'Invalid old password.' on the Account Settings page

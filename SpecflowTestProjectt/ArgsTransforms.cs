@@ -25,6 +25,12 @@ namespace SpecflowTestProject
         {
             return Constants.Password;
         }
+
+        [StepArgumentTransformation("new client phone")]
+        public string GetNewClientPhone()
+        {
+            return "3311550022";
+        }
     }
 }
 
