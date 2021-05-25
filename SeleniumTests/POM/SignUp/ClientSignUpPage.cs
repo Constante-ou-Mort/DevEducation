@@ -72,5 +72,11 @@ namespace SeleniumTests.POM.SignUp
         {
             _webDriver.FindElement(_nextButton).Click();
         }
+
+        public string SeeErrorMessageNearField(string message)
+        {
+            var messageText = _webDriver.FindElement(By.XPath($"//*[contains(text(), '{message}')]")).Text;
+            return messageText;
+        }
     }
 }

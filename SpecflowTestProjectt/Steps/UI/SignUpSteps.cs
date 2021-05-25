@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using SeleniumTests.POM.SignUp;
+using NUnit.Framework;
 
 namespace SpecflowTestProject.Steps.UI
 {
@@ -69,6 +70,14 @@ namespace SpecflowTestProject.Steps.UI
         public void WhenIClickNextButtonOnSignUpPage()
         {
             _clientSignUpPage.ClickNextButton();
+        }
+
+        [Then(@"New client sees error message - (.*) near field with invalid data")]
+        public void ThenNewClientSeesErrorMessageNearField(string message)
+        {
+            var errorMessage = _clientSignUpPage.SeeErrorMessageNearField(message);
+
+            Assert.AreEqual(message, errorMessage);
         }
     }
 }
