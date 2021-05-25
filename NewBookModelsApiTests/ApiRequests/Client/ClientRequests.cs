@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NewBookModelsApiTests.Models.Auth;
-using NewBookModelsApiTests.Models.Client;
 using Newtonsoft.Json;
 using RestSharp;
+using static NewBookModelsApiTests.ApiRequests.Auth.AuthRequests;
 
 namespace NewBookModelsApiTests.ApiRequests.Client
 {
@@ -29,11 +28,26 @@ namespace NewBookModelsApiTests.ApiRequests.Client
 
             return new ResponseModel<ClientAuthModel> { Model = changeEmailResponse, Response = response };
         }
-    }
 
-    public class ResponseModel<T>
-    {
-        public T Model { get; set; }
-        public IRestResponse Response { get; set; }
+        public static ResponseModel<ClientAuthModel> SendRequestChangePhoneNumberPost(string password, string phoneNumber, string token)
+        {
+            var client = new RestClient("https://api.newbookmodels.com/api/v1/client/change_phone/");
+            var request = new RestRequest(Method.POST);
+            var newGenaralInfoModel = new Dictionary<string, string>
+             {
+                 { "password", password },
+                 { "phone_number", phoneNumber }
+             };
+
+            request.AddHeader("content-type", "application/json");
+            request.AddHeader("authorization", token);
+            request.AddJsonBody(newGenaralInfoModel);
+            request.RequestFormat = DataFormat.Json;
+
+            var response = client.Execute(request);
+            var changePhoneResponse = JsonConvert.DeserializeObject<ClientAuthModel>(response.Content);
+
+            return new ResponseModel<ClientAuthModel> { Model = changePhoneResponse, Response = response };
+        }
     }
 }

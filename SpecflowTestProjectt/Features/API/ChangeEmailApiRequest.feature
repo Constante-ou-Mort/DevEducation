@@ -1,5 +1,5 @@
 ﻿@UpdateProfile @api
-Feature: UpdateProfileApiRequest
+Feature: ChangeEmailApiRequest
 
 @mytag
 Scenario Outline: update client email using Api request POST updating/updating-profile
@@ -7,10 +7,7 @@ Scenario Outline: update client email using Api request POST updating/updating-p
 	| email   |
 	| <email> |
 	Then '200' status code is recieved from the Api request
-	And Message 'Created' is reciieved from the Api request
+	And message 'created' is recieved from the Api request
 Examples:
-	| email           |
-	| Lili@gmail.com  |
-	| Marina@orf.com  |
-	| ADFG@a.ua       |
-	| Marinet@com.com |
+	| email     |
+	| uniqEmail |

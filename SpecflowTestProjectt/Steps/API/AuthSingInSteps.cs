@@ -18,7 +18,7 @@ namespace SpecflowTestProject.Steps.API
         [Given(@"Client is created")]
         public void GivenClientIsCreated()
         {
-            var createUser = AuthRequests.SendRequestClientSignUpPost(new Dictionary<string, string>
+            var createdUser = AuthRequests.SendRequestClientSignUpPost(new Dictionary<string, string>
             {
                 {"email", $"asda2sd2asd{DateTime.Now:ddyyyymmHHmmssffff}@asdasd.ert"},
                 {"first_name", "asdasdasd"},
@@ -27,7 +27,7 @@ namespace SpecflowTestProject.Steps.API
                 {"phone_number", "3453453454"}
             });
 
-            _scenarioContext.Add(Constants.User, createUser);
+            _scenarioContext.Add(Constants.User, createdUser);
         }
     }
 }

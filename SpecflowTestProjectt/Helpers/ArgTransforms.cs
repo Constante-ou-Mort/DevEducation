@@ -1,4 +1,5 @@
 ﻿using NewBookModelsApiTests.Models.Auth;
+using System;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestProject
@@ -13,10 +14,10 @@ namespace SpecflowTestProject
             _scenarioContext = scenarioContext;
         }
 
-        [StepArgumentTransformation("unique_email")]
-        public string GetDefaultClientPassword()
+        [StepArgumentTransformation("uniqEmail")]
+        public string GetRegistrationEmail()
         {
-            return Constants.Email;
+            return $"{DateTime.Now:yyyyMMddTHHmmss}@gmail.com";
         }
     }
 }

@@ -8,7 +8,6 @@ using TechTalk.SpecFlow;
 
 namespace SpecflowTestProject.Features
 {
-
     [Binding]
     public class RegistrationApiRequestSteps
     {
@@ -35,13 +34,13 @@ namespace SpecflowTestProject.Features
         }
         
         [Then(@"(.*) status code is recieved from the Api request")]
-        public void ThenStatusCodeIsRecievedFromTheApiRequest()
+        public void ThenStatusCodeIsRecievedFromTheApiRequest(int p0)
         {
             var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Response.StatusCode;
             Assert.AreEqual(HttpStatusCode.Created, actualStatus);
         }
 
-        [Then(@"Message '(.*)' is reciieved from the Api request")]
+        [Then(@"message (.*) is recieved from the Api request")]
         public void MessageIsRecievedFromTheApiRequest(string message)
         {
             var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Response.StatusDescription;
