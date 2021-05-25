@@ -32,19 +32,5 @@ namespace SpecflowTestProject.Features
 
             _scenarioContext.Add(Constants.User, createdUser);
         }
-        
-        [Then(@"(.*) status code is recieved from the Api request")]
-        public void ThenStatusCodeIsRecievedFromTheApiRequest(string status, Table table)
-        {
-            var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Response.StatusCode;
-            Assert.AreEqual(HttpStatusCode.Created, actualStatus);
-        }
-
-        [Then(@"message (.*) is recieved from the Api request")]
-        public void MessageIsRecievedFromTheApiRequest(string status, Table table)
-        {
-            var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Response.StatusDescription;
-            Assert.AreEqual(table.Rows[0]["message"], actualStatus);
-        }
     }
 }

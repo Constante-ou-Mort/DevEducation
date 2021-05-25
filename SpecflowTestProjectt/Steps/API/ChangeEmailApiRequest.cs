@@ -8,22 +8,22 @@ using TechTalk.SpecFlow;
 namespace SpecflowTestProject.Features.API
 {
     [Binding]
-    public class UpdateProfileApiRequestSteps
+    public class ChangeEmailApiRequest
     {
         private readonly ScenarioContext _scenarioContext;
 
-        public UpdateProfileApiRequestSteps(ScenarioContext scenarioContext)
+        public ChangeEmailApiRequest(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
         }
 
-        [Given(@"Change email using Api request POST updating/updating-profile")]
-        public void GivenChangeGeneralInformationUsingApiRequestPOSTUpdatingUpdating_Profile(Table table)
+        [Given(@"Change email to (.*) using Api request POST updating/updating-profile")]
+        public void GivenChangeGeneralInformationUsingApiRequestPOSTUpdatingUpdating_Profile(string email, Table table)
         {
             var user = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Model.TokenData.Token; 
 
             var changeInfo = ClientRequests.SendRequestChangeClientEmailPost(Constants.Password, table.Rows[0]["email"], user);
-            _scenarioContext.Add(Constants.User, changeInfo);
+            _scenarioContext[Constants.User] = changeInfo;
         }
     }
 }

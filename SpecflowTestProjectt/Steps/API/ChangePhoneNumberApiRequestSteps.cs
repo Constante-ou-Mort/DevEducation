@@ -15,8 +15,8 @@ namespace SpecflowTestProject.Features.API
             _scenarioContext = scenarioContext;
         }
 
-        [Given(@"Change phone using Api request POST updating/updating-profile")]
-        public void GivenChangePhoneUsingApiRequestPOSTUpdatingUpdating_Profile(Table table)
+        [Given(@"Change phone to (.*) using Api request POST updating/updating-profile")]
+        public void GivenChangePhoneUsingApiRequestPOSTUpdatingUpdating_Profile(string phone, Table table)
         {
             var user = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Model.TokenData.Token;
 
