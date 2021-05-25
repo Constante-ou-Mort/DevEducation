@@ -6,6 +6,7 @@
         public const string User = "User";
 
         public static string ChangedClientEmailResponseModel = "Changed Client Email Response Model";
+        public static string ChangedClientPasswordResponseModel = "Changed Client Password Response Model";
 
         public static string ExpectedEmail = "Expexted Email";
 
@@ -13,5 +14,6 @@
 
         public static string ExpectedPhoneNumber = "Expexted Phone Number";
         public static string ExpectedPassword = "Expexted Password";
+        public static string ExpectedToken = "Expexted token";
     }
 }

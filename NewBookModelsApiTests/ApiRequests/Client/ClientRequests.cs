@@ -50,6 +50,27 @@ namespace NewBookModelsApiTests.ApiRequests.Client
 
             return new ResponseModel<ChangePhoneNumberResponse> { Model = changePhoneResponse, Response = response };
         }
+
+        public static ResponseModel<ChangePasswordResponse> SendRequestChangeClientPasswordPost(string oldPassword, string newPassword, string token)
+        {
+            var client = new RestClient("https://api.newbookmodels.com/api/v1/password/change/");
+            var request = new RestRequest(Method.POST);
+            var newPasswordModel = new Dictionary<string, string>
+            {
+                { "old_password", oldPassword },
+                { "new_password", newPassword },
+            };
+
+            request.AddHeader("content-type", "application/json");
+            request.AddHeader("authorization", token);
+            request.AddJsonBody(newPasswordModel);
+            request.RequestFormat = DataFormat.Json;
+
+            var response = client.Execute(request);
+            var changePasswordResponse = JsonConvert.DeserializeObject<ChangePasswordResponse>(response.Content);
+
+            return new ResponseModel<ChangePasswordResponse> { Model = changePasswordResponse, Response = response };
+        }
     }
 
     public class ResponseModel<T>

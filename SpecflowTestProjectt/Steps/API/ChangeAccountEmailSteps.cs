@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 namespace SpecflowTestProject.Steps.API
 {
     [Binding]
-    class ChangeAccountEmailSteps
+    public class ChangeAccountEmailSteps
     {
         private readonly ScenarioContext _scenarioContext;
 
