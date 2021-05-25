@@ -9,7 +9,7 @@ namespace NewBookModelsApiTests.ApiRequests.Client
 {
     public static class ClientRequests
     {
-        public static ResponseModel<ChangeEmailResponse> SendRequestChangeClientEmailPost(string password, string email, string token)
+        public static ResponseModel<ClientAuthModel> SendRequestChangeClientEmailPost(string password, string email, string token)
         {
             var client = new RestClient("https://api.newbookmodels.com/api/v1/client/change_email/");
             var request = new RestRequest(Method.POST);
@@ -25,9 +25,9 @@ namespace NewBookModelsApiTests.ApiRequests.Client
             request.RequestFormat = DataFormat.Json;
 
             var response = client.Execute(request);
-            var changeEmailResponse = JsonConvert.DeserializeObject<ChangeEmailResponse>(response.Content);
+            var changeEmailResponse = JsonConvert.DeserializeObject<ClientAuthModel>(response.Content);
 
-            return new ResponseModel<ChangeEmailResponse> { Model = changeEmailResponse, Response = response };
+            return new ResponseModel<ClientAuthModel> { Model = changeEmailResponse, Response = response };
         }
     }
 

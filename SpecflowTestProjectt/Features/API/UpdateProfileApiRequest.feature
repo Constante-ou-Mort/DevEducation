@@ -2,9 +2,15 @@
 Feature: UpdateProfileApiRequest
 
 @mytag
-Scenario: update client profile using Api request POST updating/updating-profile
-	Given Create client using POST method registration/registration-client with valid data
-	| email   | password   | confirm_password | name   | last_name   | phone_number   |
-	| <email> | <password> | <password>       | <name> | <last_name> | <phone_number> |
-	Then '200' status code is recieved from the Api request                   
- 
+Scenario Outline: update client email using Api request POST updating/updating-profile
+	Given Change email using Api request POST updating/updating-profile
+	| email   |
+	| <email> |
+	Then '200' status code is recieved from the Api request
+	And Message 'Created' is reciieved from the Api request
+Examples:
+	| email           |
+	| Lili@gmail.com  |
+	| Marina@orf.com  |
+	| ADFG@a.ua       |
+	| Marinet@com.com |

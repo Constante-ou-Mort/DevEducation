@@ -20,7 +20,7 @@ namespace SpecflowTestProject.Features
         }
 
         [Given(@"Create client using POST method registration/registration-client with valid data")]
-        public void GivenICreateClientUsingPOSTMethodRegistrationRegistration_ClientWithValidData(Table table)
+        public void GivenCreateClientUsingPOSTMethodRegistrationRegistration_ClientWithValidData()
         {
             var createdUser = AuthRequests.SendRequestClientSignUpPost(new Dictionary<string, string>
             {
@@ -34,18 +34,18 @@ namespace SpecflowTestProject.Features
             _scenarioContext.Add(Constants.User, createdUser);
         }
         
-        [Then(@"'(.*)' status code is recieved from the Api request")]
-        public void ThenStatusCodeIsRecievedFromTheApiRequest(int p0)
+        [Then(@"(.*) status code is recieved from the Api request")]
+        public void ThenStatusCodeIsRecievedFromTheApiRequest()
         {
             var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Response.StatusCode;
             Assert.AreEqual(HttpStatusCode.Created, actualStatus);
         }
 
-        [Then(@"message '(.*)' is reciieved the Api request")]
+        [Then(@"Message '(.*)' is reciieved from the Api request")]
         public void MessageIsRecievedFromTheApiRequest(string message)
         {
-            var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Response.Content;
-            Assert.AreEqual(HttpStatusCode.Created, actualStatus);
+            var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Response.StatusDescription;
+            Assert.AreEqual(message, actualStatus);
         }
     }
 }

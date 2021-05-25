@@ -52,7 +52,7 @@ namespace NewBookModelsApiTests
 
             Assert.Multiple(() =>
             {
-                Assert.AreEqual(expectedEmail, responseModel.Model.Email);
+                Assert.AreEqual(expectedEmail, responseModel.Model.User.Email);
                 Assert.AreEqual(HttpStatusCode.OK, responseModel.Response.StatusCode);
             });
         }

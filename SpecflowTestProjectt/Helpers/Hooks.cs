@@ -29,7 +29,7 @@ namespace SpecflowTestProject
             _scenarioContext.Add(Constants.WebDriver, driver);
         }
 
-        [AfterScenario]
+        [AfterScenario("ui")]
         public void AfterScenario()
         {
             _scenarioContext.Get<IWebDriver>(Constants.WebDriver).Quit();
