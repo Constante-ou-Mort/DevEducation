@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace SeleniumTests.POM.AccountSettings
 {
@@ -21,9 +22,9 @@ namespace SeleniumTests.POM.AccountSettings
         private static readonly By _newEmailEditFieldEmailBlock = By.CssSelector("nb-account-info-email-address common-input[formcontrolname = 'email'] input");
         private static readonly By _saveChangesButtonEditEmailBlock = By.CssSelector("nb-account-info-email-address common-button-deprecated button[type = 'submit']");
 
-        private static readonly By _passwordEditButton = By.CssSelector("nb-account-info-password nb-edit-switcher div div");
+        private static readonly By _passwordEditButton = By.CssSelector("nb-account-info-password div[class ^= 'edit-switcher']");
         private static readonly By _passwordCancelEditButton = By.CssSelector("nb-account-info-password form div div nb-edit-switcher div[class ^= 'paragraph']");
-        private static readonly By _currentPasswordFieldEditPasswordBlock = By.CssSelector("nb-account-info-password common-input[formcontrolname = old_password]");
+        private static readonly By _currentPasswordFieldEditPasswordBlock = By.CssSelector("nb-account-info-password common-input[formcontrolname = old_password] input");
         private static readonly By _newPasswordFieldEditPasswordBlock = By.CssSelector("nb-account-info-password common-input[formcontrolname = new_password] input");
         private static readonly By _newPasswordConfirmationFieldEditPasswordBlock = By.CssSelector("nb-account-info-password common-input[formcontrolname = newPasswordConfirmation] input");
         private static readonly By _saveChangesButtonEditPasswordBlock = By.CssSelector("nb-account-info-password common-button-deprecated button[type = 'submit']");
@@ -124,7 +125,9 @@ namespace SeleniumTests.POM.AccountSettings
 
         public AccountInfoPage ClickPasswordEditButton()
         {
-            _webDriver.FindElement(_passwordEditButton).Click();
+            var actions = new Actions(_webDriver);
+            IWebElement element = _webDriver.FindElement(_passwordEditButton); 
+            actions.MoveToElement(element, 1, 1).Click().Build().Perform();
             return this;
         }
 

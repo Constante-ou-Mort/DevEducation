@@ -62,7 +62,6 @@ namespace SpecflowTestProject.Steps.UI
         [When(@"I click on edit password button on Account Settings page")]
         public void WhenIClickEditPasswordButtonOnAccountSettingsPage()
         {
-            var user = _scenarioContext.Get<ClientAuthModel>(Context.User);
             _accountInfoPage.ClickPasswordEditButton();
         }
 
@@ -93,7 +92,6 @@ namespace SpecflowTestProject.Steps.UI
         [Then(@"I see error message '(.*)' on the Account Settings page")]
         public void WhenIInputInvalidEmail(string message)
         {
-            Thread.Sleep(7000);
             Assert.AreEqual(message, _accountInfoPage.SeeNotificationMessageInvalidOldPassword());
         }
     }

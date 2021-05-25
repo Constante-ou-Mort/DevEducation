@@ -26,19 +26,6 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage = new SingInPage(_webDriver);
         }
 
-        /*[Given(@"Client is authorized")]
-        public void GivenClientIsAuthorized()
-        {
-            IJavaScriptExecutor js = (IJavaScriptExecutor)_webDriver;
-
-            _webDriver.Navigate().GoToUrl("https://newbookmodels.com/auth/signin");
-
-            js.ExecuteScript($"localStorage.setItem('access_token','{Context.User.}');");
-            
-
-            _scenarioContext.Add(Context.User, createUser);
-        }*/
-
         [Given(@"Sign in page is opened")]
         public void GivenSignInPageIsOpened()
         {
