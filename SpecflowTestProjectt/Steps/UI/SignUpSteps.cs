@@ -17,7 +17,7 @@ namespace SpecflowTestProject.Features
             _singUpPage = new SignUpPage(webDriver);
         }
 
-        [Given(@"Sign  up page is opened")]
+        [Given(@"Sign up page is opened")]
         public void GivenSignUpPageIsOpened()
         {
             _singUpPage.GoToRegistrationPage();

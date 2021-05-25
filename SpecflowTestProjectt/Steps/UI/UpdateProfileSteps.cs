@@ -50,16 +50,15 @@ namespace SpecflowTestProject.Features
             _updateProfilePage.SetNewLastName(table.Rows[0]["last_name"]);
             _updateProfilePage.SetIndustry(table.Rows[0]["industry"]);
             _updateProfilePage.SetLocation(table.Rows[0]["company_location"]);
+            _updateProfilePage.ClickSaveGeneralChanges();
         }
         
-        [Then(@"Successfully changed name to '(.*)', industry to '(.*)', company location to '(.*)' on update profile page")]
-        public void ThenSuccessfullyChangedGeneralInformationOnUpdateProfilePage(Table table, string name, string industry, string location)
+        [Then(@"Successfully changed name to (.*), industry to (.*), company location to (.*) on update profile page")]
+        public void ThenSuccessfullyChangedGeneralInformationOnUpdateProfilePage(string name, string industry, string location)
         {
-            _updateProfilePage.GetNewLocation();
-
-            Assert.AreEqual(table.Rows[0]["new_name"], _updateProfilePage.GetNewName());
-            Assert.AreEqual(table.Rows[0]["industry"], _updateProfilePage.GetNewIndustry());
-            Assert.AreEqual(table.Rows[0]["company_location"], _updateProfilePage.GetNewLocation());
+            Assert.AreEqual(name, _updateProfilePage.GetNewName());
+            Assert.AreEqual(industry, _updateProfilePage.GetNewIndustry());
+            Assert.AreEqual(location, _updateProfilePage.GetNewLocation());
         }
     }
 }

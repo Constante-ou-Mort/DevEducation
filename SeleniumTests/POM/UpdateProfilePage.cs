@@ -173,7 +173,7 @@ namespace SeleniumTests.PageObject
         public UpdateProfilePage SetLocation(string location)
         {
             var locationField = _webDriver.FindElement(_companyLocationfield);
-            locationField.SendKeys("hhh");
+            locationField.SendKeys(location);
             Thread.Sleep(500);
             locationField.SendKeys(Keys.Down);
             locationField.SendKeys(Keys.Enter);
