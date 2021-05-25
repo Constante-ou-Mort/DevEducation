@@ -49,5 +49,20 @@ namespace NewBookModelsApiTests.ApiRequests.Client
 
             return new ResponseModel<ClientAuthModel> { Model = changePhoneResponse, Response = response };
         }
+
+        public static ResponseModel<ClientAuthModel> SendRequestClientSignInPost(Dictionary<string, string> user)
+        {
+            var client = new RestClient("https://api.newbookmodels.com/api/v1/auth/signin/");
+            var request = new RestRequest(Method.POST);
+
+            request.AddHeader("content-type", "application/json");
+            request.AddJsonBody(user);
+            request.RequestFormat = DataFormat.Json;
+
+            var response = client.Execute(request);
+            var authUser = JsonConvert.DeserializeObject<ClientAuthModel>(response.Content);
+
+            return new ResponseModel<ClientAuthModel> { Model = authUser, Response = response };
+        }
     }
 }

@@ -1,8 +1,8 @@
-﻿@UpdateProfile @api
+﻿@ChangeEmail @Api
 Feature: ChangeEmailApiRequest
 
-@mytag
-Scenario Outline: update client email using Api request POST updating/updating-profile
+@Positive @Post
+Scenario Outline: Update client email using Api request POST updating/updating-profile
 	Given Change email using Api request POST updating/updating-profile
 	| email   |
 	| <email> |

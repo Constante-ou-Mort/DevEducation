@@ -1,8 +1,8 @@
-﻿@UpdateProfile @api
+﻿@ChangePhone @Api
 Feature: ChangePhoneNumberApiRequest
 
-@mytag
-Scenario Outline: update client phone number using Api request POST updating/updating-profile
+@Positive @Post
+Scenario Outline: Update client phone number using Api request POST updating/updating-profile
 	Given Change phone using Api request POST updating/updating-profile
 	| phone_number   |
 	| <phone_number> |

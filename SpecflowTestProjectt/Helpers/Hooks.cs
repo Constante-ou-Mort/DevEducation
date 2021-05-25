@@ -37,7 +37,7 @@ namespace SpecflowTestProject
             _scenarioContext.Get<IWebDriver>(Constants.WebDriver).Quit();
         }
 
-        [BeforeScenario("UpdateProfile")]
+        [BeforeScenario("ChangeEmail", "ChangePhone", "Authorization")]
         public void BeforeScenarioApi()
         {
             var createdUser = AuthRequests.SendRequestClientSignUpPost(new Dictionary<string, string>
