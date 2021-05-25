@@ -12,5 +12,6 @@
         public static string ChangedClientPhoneNumberlResponseModel = "Changed Client Phone Number Response Model";
 
         public static string ExpectedPhoneNumber = "Expexted Phone Number";
+        public static string ExpectedPassword = "Expexted Password";
     }
 }

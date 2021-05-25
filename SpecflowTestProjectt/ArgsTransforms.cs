@@ -19,6 +19,12 @@ namespace SpecflowTestProject
         {
             return $"Jonson{DateTime.Now:ddyyyymmHHmmssffff}@gmail.com";
         }
+
+        [StepArgumentTransformation("current client password")]
+        public string GetCurrentClientPassword()
+        {
+            return Constants.Password;
+        }
     }
 }
 

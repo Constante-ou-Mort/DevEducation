@@ -35,7 +35,7 @@ namespace SpecflowTestProject.Steps.UI
                 { "email", $"asda2sd2asd{DateTime.Now:ddyyyymmHHssmm}@asdasd.ert" },
                 { "first_name", "asdasdasd" },
                 { "last_name", "asdasdasd" },
-                { "password", "123qweQWE" },
+                { "password", Constants.Password },
                 { "phone_number", "3453453454" }
             };
 
@@ -65,8 +65,8 @@ namespace SpecflowTestProject.Steps.UI
             _accountInfoPage.ClickPasswordEditButton();
         }
 
-        [When(@"I input client '(.*)' at Current password field in the Password Edit Block")]
-        public void WhenIInputPasswordEditPasswordBlock(string currentPassword)
+        [When(@"I input (.*) at Current password field in the Password Edit Block")]
+        public void WhenIInputCurrentClientPasswordEditPasswordBlock(string currentPassword)
         {
             _accountInfoPage.SetCurrentPasswordEditPasswordBlock(currentPassword);
         }
@@ -75,6 +75,7 @@ namespace SpecflowTestProject.Steps.UI
         public void WhenIInputNewPasswordEditPasswordBlock(string newPassword)
         {
             _accountInfoPage.SetNewPasswordEditPasswordBlock(newPassword);
+            _scenarioContext.Add(Context.ExpectedPassword, newPassword);
         }
 
         [When(@"I input new password '(.*)' at New password confirm field in the Password Edit Block")]
@@ -89,8 +90,15 @@ namespace SpecflowTestProject.Steps.UI
             _accountInfoPage.ClickSaveChangesButtonEditPasswordBlock();
         }
 
+        [Then(@"Client password successfully changed on '(.*)' in NewBookModels Account")]
+        public void ThenClientPasswordChanged(string password)
+        {
+            var expectedPassword = _scenarioContext.Get<string>(Context.ExpectedPassword);
+            Assert.AreEqual(password, expectedPassword);
+        }
+
         [Then(@"I see error message '(.*)' on the Account Settings page")]
-        public void WhenIInputInvalidEmail(string message)
+        public void ThenISeeInvalidOldPasswordErrorMessage(string message)
         {
             Assert.AreEqual(message, _accountInfoPage.SeeNotificationMessageInvalidOldPassword());
         }
