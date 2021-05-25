@@ -13,7 +13,7 @@ Scenario: It is possible to login in NewBookModels with valid data
 	Then I successfully logged in NewBookModels as created client
 
 @negative
-Scenario Outline: It is unpossible to login in NewBookModels with invalid email
+Scenario Outline: It is impossible to login in NewBookModels with invalid email
 	Given Client is created
 	And Sign in page is opened
 	When I input '<email>' in email field

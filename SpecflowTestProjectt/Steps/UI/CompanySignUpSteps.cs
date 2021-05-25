@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
+using SeleniumTests.POM.SignUp;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestProject.Steps.UI
@@ -21,6 +22,12 @@ namespace SpecflowTestProject.Steps.UI
 
         [Then(@"I successfully logged in NewBookModels as created client")]
         public void ThenSuccessfullyLoggedInNewBookModelAsCreatedClient()
+        {
+            Assert.IsTrue(_companySignUpPage.IsPageTitleVisible());
+        }
+
+        [Then(@"New client is successfully registrated in NewBookModels")]
+        public void ThenNewClientSuccessfullyRegisteredInNewBookModels()
         {
             Assert.IsTrue(_companySignUpPage.IsPageTitleVisible());
         }
