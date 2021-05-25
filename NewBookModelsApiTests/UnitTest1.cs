@@ -48,14 +48,13 @@ namespace NewBookModelsApiTests
             var createdUser = AuthRequests.SendRequestClientSignUpPost(user);
 
            var responseModel = ClientRequests.SendRequestChangeClientEmailPost(
-                "123qweQWE", expectedEmail, createdUser.TokenData.Token);
+                "123qweQWE", expectedEmail, createdUser.Model.TokenData.Token);
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(expectedEmail, responseModel.Model.Email);
                 Assert.AreEqual(HttpStatusCode.OK, responseModel.Response.StatusCode);
             });
-
         }
     }
 }

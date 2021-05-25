@@ -11,7 +11,7 @@ Scenario Outline: Update GeneralInfo with valid data
   When I update profile with data on UpdateProfile page
   | name   | last_name   | industry   | company_location   |
   | <name> | <last_name> | <industry> | <company_location> |
-  Then Successfully changed General Information on update profile page
+  Then Successfully changed name to <new_name>, industry to <industry>, company location to <company_location> on update profile page
 Examples:
-  | name | last_name | industry | company_location          |
-  | Lili | Bom       | fashion  | Gatlinburg, TN 37738, USA |
+  | name | last_name | industry | company_location          | new_name |
+  | Lili | Bom       | fashion  | Gatlinburg, TN 37738, USA | Lili Bom |

@@ -8,7 +8,7 @@ namespace SeleniumTests.PageObject
         private IWebDriver _webDriver;
 
         private static By _logOutButton = By.CssSelector("[class='link link_type_logout link_active']");
-        private static By _changeGeneralDataButton = By.CssSelector("nb-account-info-general-information>form>div:nth-child(1)>div>nb-edit-switcher>div>div");
+        private static By _changeGeneralDataButton = By.CssSelector(" nb-account-info-general-information > form > div:nth-child(1) > div > nb-edit-switcher > div");
         private static By _changeEmailButton = By.CssSelector("nb-account-info-email-address>form>div:nth-child(1)>div>nb-edit-switcher>div>div");
         private static By _changePasswordButton = By.CssSelector("nb-account-info-password div:nth-child(1)>div>nb-edit-switcher>div>div");
         private static By _changePhoneButton = By.CssSelector("nb-account-info-phone>div:nth-child(1)>div>nb-edit-switcher>div>div");

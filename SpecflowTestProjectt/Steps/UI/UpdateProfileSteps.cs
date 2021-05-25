@@ -1,8 +1,14 @@
-﻿using NUnit.Framework;
+﻿using NewBookModelsApiTests.ApiRequests.Auth;
+using NewBookModelsApiTests.Models.Auth;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using SeleniumTests.PageObject;
 using System;
 using TechTalk.SpecFlow;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
+using WebDriverManager.Helpers;
 
 namespace SpecflowTestProject.Features
 {
@@ -22,7 +28,18 @@ namespace SpecflowTestProject.Features
         [Given(@"Update Profile page is opened")]
         public void GivenUpdateProfilePageIsOpened()
         {
-            _updateProfilePage.GoToUpdateProfileLink();
+            var user = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Model.TokenData.Token;
+            new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
+            var webDriver = _scenarioContext.Get<IWebDriver>(Constants.WebDriver);
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(7);
+            webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(60);
+            IJavaScriptExecutor js = (IJavaScriptExecutor)webDriver;
+
+            webDriver.Navigate().GoToUrl("https://newbookmodels.com/auth/signin");
+
+            js.ExecuteScript($"localStorage.setItem('access_token','{user}');");
+
+            webDriver.Navigate().GoToUrl("https://newbookmodels.com/account-settings/account-info/edit");
         }
         
         [When(@"I update profile with data on UpdateProfile page")]
@@ -30,19 +47,19 @@ namespace SpecflowTestProject.Features
         {
             _updateProfilePage.ClickChangeGeneralInfo();
             _updateProfilePage.SetNewName(table.Rows[0]["name"]);
-            _updateProfilePage.SetNewName(table.Rows[0]["last_name"]);
-            _updateProfilePage.SetNewName(table.Rows[0]["industry"]);
-            _updateProfilePage.SetNewName(table.Rows[0]["company_location"]);
+            _updateProfilePage.SetNewLastName(table.Rows[0]["last_name"]);
+            _updateProfilePage.SetIndustry(table.Rows[0]["industry"]);
+            _updateProfilePage.SetLocation(table.Rows[0]["company_location"]);
         }
         
-        [Then(@"Successfully changed General Information on update profile page")]
-        public void ThenSuccessfullyChangedGeneralInformationOnUpdateProfilePage()
+        [Then(@"Successfully changed name to '(.*)', industry to '(.*)', company location to '(.*)' on update profile page")]
+        public void ThenSuccessfullyChangedGeneralInformationOnUpdateProfilePage(Table table, string name, string industry, string location)
         {
             _updateProfilePage.GetNewLocation();
 
-            Assert.AreEqual("Lili Bom", _updateProfilePage.GetNewName());
-            Assert.AreEqual("fashion", _updateProfilePage.GetNewIndustry());
-            Assert.AreEqual("Gatlinburg, TN 37738, USA", _updateProfilePage.GetNewLocation());
+            Assert.AreEqual(table.Rows[0]["new_name"], _updateProfilePage.GetNewName());
+            Assert.AreEqual(table.Rows[0]["industry"], _updateProfilePage.GetNewIndustry());
+            Assert.AreEqual(table.Rows[0]["company_location"], _updateProfilePage.GetNewLocation());
         }
     }
 }
