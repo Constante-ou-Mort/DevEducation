@@ -52,5 +52,24 @@ namespace SpecflowTestProject.Steps.API
 
             _scenarioContext.Add(Context.User, createUser);
         }
+
+        [Given(@"Client is created with added company information")]
+        public void GivenClientIsCreatedWithCompayInfo()
+        {
+            var createUser = AuthRequests.SendRequestClientSignUpPost(new Dictionary<string, string>
+            {
+                {"email", $"asda2sd2asd{DateTime.Now:ddyyyymmHHmmssffff}@asdasd.ert"},
+                {"first_name", Constants.FirstName},
+                {"last_name", Constants.LastName},
+                {"password", Constants.Password},
+                {"phone_number", "3453453454"}
+            });
+
+            createUser.User.ClientProfile.CompanyDescription = Constants.CompanyDescription;
+            createUser.User.ClientProfile.CompanyName = Constants.CompanyName;
+            createUser.User.ClientProfile.CompanyWebsite = Constants.CompanyURL;
+
+            _scenarioContext.Add(Context.User, createUser);
+        }
     }
 }

@@ -114,6 +114,28 @@ namespace NewBookModelsApiTests.ApiRequests.Client
 
             return new ResponseModel<ChangeProfileInfoResponse> { Model = changePriofileInfoResponse, Response = response };
         }
+
+        public static ResponseModel<ChangeCompanyInfoResponse> SendRequestChangeClientProfileCompanyInfoPatch(string companyDescription, string companyName, string companyWebsite, string token)
+        {
+            var client = new RestClient(" https://api.newbookmodels.com/api/v1/client/profile/");
+            var request = new RestRequest(Method.PATCH);
+            var changeProfileCompanyInfoModel = new Dictionary<string, string>
+            {
+                { "company_description", companyDescription },
+                { "company_name", companyName },
+                { "company_website", companyWebsite },
+            };
+
+            request.AddHeader("content-type", "application/json");
+            request.AddHeader("authorization", token);
+            request.AddJsonBody(changeProfileCompanyInfoModel);
+            request.RequestFormat = DataFormat.Json;
+
+            var response = client.Execute(request);
+            var changePriofileCompanyInfoResponse = JsonConvert.DeserializeObject<ChangeCompanyInfoResponse>(response.Content);
+
+            return new ResponseModel<ChangeCompanyInfoResponse> { Model = changePriofileCompanyInfoResponse, Response = response };
+        }
     }
 
     public class ResponseModel<T>

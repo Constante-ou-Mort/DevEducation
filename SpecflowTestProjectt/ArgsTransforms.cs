@@ -61,6 +61,24 @@ namespace SpecflowTestProject
         {
             return Constants.LocationTimezone;
         }
+
+        [StepArgumentTransformation("current company description")]
+        public string GetCurrentCompanyDescription()
+        {
+            return Constants.CompanyDescription;
+        }
+
+        [StepArgumentTransformation("current company name")]
+        public string GetCurrentCompanyName()
+        {
+            return Constants.CompanyName;
+        }
+
+        [StepArgumentTransformation("current company url")]
+        public string GetCurrentCompanyURL()
+        {
+            return Constants.CompanyURL;
+        }
     }
 }
 

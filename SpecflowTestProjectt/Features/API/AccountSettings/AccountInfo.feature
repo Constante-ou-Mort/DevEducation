@@ -1,8 +1,8 @@
-﻿@AccountSettings @api
-Feature: AccountSettings
-	In order to update my account data in NewBookModels
+﻿@AccountInfo @api
+Feature: AccountInfo
+	In order to update my account information in NewBookModels
 	As a client of NewBookModels
-	I want to change my account in NewBookModels
+	I want to change my account data in NewBookModels
 
 @positive
 Scenario: It is possible to change client email with valid data in NewBookModels Account
@@ -43,3 +43,5 @@ Examples:
 	| Fashion                 | current client location name | current client location timezone | Fashion; New York, NY, USA; America/New_York |
 	| current client industry | Nevada, USA                  | America/Los_Angeles              | Cosmetics; Nevada, USA; America/Los_Angeles  |
 	| Fashion                 | Nevada, USA                  | America/Los_Angeles              | Fashion; Nevada, USA; America/Los_Angeles    |
+
+ 

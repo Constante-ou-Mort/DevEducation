@@ -23,7 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Features\API\AccountSettings.feature.cs">
+    <Compile Update="Features\API\AccountSettings\AccountInfo.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\API\AccountSettings\Profile.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Features\UI\AccountSettings.feature.cs">
@@ -35,9 +38,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <SpecFlowFeatureFiles Update="Features\API\AccountSettings.feature">
+    <SpecFlowFeatureFiles Update="Features\API\AccountSettings\AccountInfo.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>AccountSettings.feature.cs</LastGenOutput>
+      <LastGenOutput>AccountInfo.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\API\AccountSettings\Profile.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Profile.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\UI\AccountSettings.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
