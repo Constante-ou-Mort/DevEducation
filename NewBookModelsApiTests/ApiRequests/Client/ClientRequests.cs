@@ -71,6 +71,27 @@ namespace NewBookModelsApiTests.ApiRequests.Client
 
             return new ResponseModel<ChangePasswordResponse> { Model = changePasswordResponse, Response = response };
         }
+
+        public static ResponseModel<ChangeSelfInfoResponse> SendRequestChangeClientSelfInfoPatch(string firstName, string lastName, string token)
+        {
+            var client = new RestClient("https://api.newbookmodels.com/api/v1/client/self/");
+            var request = new RestRequest(Method.PATCH);
+            var changeSelfInfoModel = new Dictionary<string, string>
+            {
+                { "first_name", firstName },
+                { "last_name", lastName },
+            };
+
+            request.AddHeader("content-type", "application/json");
+            request.AddHeader("authorization", token);
+            request.AddJsonBody(changeSelfInfoModel);
+            request.RequestFormat = DataFormat.Json;
+
+            var response = client.Execute(request);
+            var changeSelfInfoResponse = JsonConvert.DeserializeObject<ChangeSelfInfoResponse>(response.Content);
+
+            return new ResponseModel<ChangeSelfInfoResponse> { Model = changeSelfInfoResponse, Response = response };
+        }
     }
 
     public class ResponseModel<T>

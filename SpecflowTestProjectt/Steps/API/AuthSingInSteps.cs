@@ -22,8 +22,8 @@ namespace SpecflowTestProject.Steps.API
             var createUser = AuthRequests.SendRequestClientSignUpPost(new Dictionary<string, string>
             {
                 {"email", $"asda2sd2asd{DateTime.Now:ddyyyymmHHmmssffff}@asdasd.ert"},
-                {"first_name", "asdasdasd"},
-                {"last_name", "asdasdasd"},
+                {"first_name", "John"},
+                {"last_name", "Smith"},
                 {"password", Constants.Password},
                 {"phone_number", "3453453454"}
             });

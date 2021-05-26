@@ -22,4 +22,12 @@ Scenario: It is possible to change client password with valid data in NewBookMod
 	When I send POST request v1/password/change/ with new password 1qa@WSXC
 	Then Client password was successfully changed in NewBookModels Account
 
-
+@positive
+Scenario Outline: It is possible to change client self information in NewBookModels Account
+	Given Client is created
+	When I send PATCH request client/self/ with <first_name> and <last_name>
+	Then Client self information was successfully changed on <self_information> in NewBookModels Account
+Examples: 
+| first_name | last_name | self_information |
+| Garet      | Hopkins   | Garet Hopkins    |
+	
