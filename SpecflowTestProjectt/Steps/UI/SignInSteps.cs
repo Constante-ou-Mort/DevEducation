@@ -55,20 +55,6 @@ namespace SpecflowTestProject.Steps.UI
             _singInPage.ClickLoginButton();
         }
 
-        [Then(@"Error message with text '(.*)' for (email|password) field")]
-        public void sdfasfdg(string message, string field)
-        {
-            var actualMEssage = "";
-
-            switch (field)
-            {
-                case "email":
-                    actualMEssage= GetErrorMessageForEmailField()
-            }
-
-            Assert.AreEqual(message,actualMEssage);
-        }
-
         public class LoginModel
         {
             public string Email{ get; set; }
