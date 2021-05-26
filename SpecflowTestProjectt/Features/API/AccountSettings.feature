@@ -27,7 +27,19 @@ Scenario Outline: It is possible to change client self information in NewBookMod
 	Given Client is created
 	When I send PATCH request client/self/ with <first_name> and <last_name>
 	Then Client self information was successfully changed on <self_information> in NewBookModels Account
-Examples: 
-| first_name | last_name | self_information |
-| Garet      | Hopkins   | Garet Hopkins    |
-	
+Examples:
+	| first_name                | last_name                | self_information |
+	| Garet                     | Hopkins                  | Garet Hopkins    |
+	| current client first name | Hopkins                  | John Hopkins     |
+	| Garet                     | current client last name | Garet Smith      |
+
+@positive
+Scenario Outline: It is possible to change client profile information in NewBookModels Account
+	Given Client is created with added profile information
+	When I send PATCH request client/profile/ with <industry> , <location_name> and <location_timezone>
+	Then Client profile information was successfully changed on <ptofile_information> in NewBookModels Account
+Examples:
+	| industry                | location_name                | location_timezone                | ptofile_information                          |
+	| Fashion                 | current client location name | current client location timezone | Fashion; New York, NY, USA; America/New_York |
+	| current client industry | Nevada, USA                  | America/Los_Angeles              | Cosmetics; Nevada, USA; America/Los_Angeles  |
+	| Fashion                 | Nevada, USA                  | America/Los_Angeles              | Fashion; Nevada, USA; America/Los_Angeles    |

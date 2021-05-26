@@ -31,6 +31,36 @@ namespace SpecflowTestProject
         {
             return "3311550022";
         }
+
+        [StepArgumentTransformation("current client first name")]
+        public string GetCurrentClientFirstName()
+        {
+            return Constants.FirstName;
+        }
+
+        [StepArgumentTransformation("current client last name")]
+        public string GetCurrentClientLastName()
+        {
+            return Constants.LastName;
+        }
+
+        [StepArgumentTransformation("current client industry")]
+        public string GetCurrentClientIndustry()
+        {
+            return Constants.Industry;
+        }
+
+        [StepArgumentTransformation("current client location name")]
+        public string GetCurrentClientLocationName()
+        {
+            return Constants.LocationName;
+        }
+
+        [StepArgumentTransformation("current client location timezone")]
+        public string GetCurrentClientLocationTimezone()
+        {
+            return Constants.LocationTimezone;
+        }
     }
 }
 

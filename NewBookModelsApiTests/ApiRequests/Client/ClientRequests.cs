@@ -92,6 +92,28 @@ namespace NewBookModelsApiTests.ApiRequests.Client
 
             return new ResponseModel<ChangeSelfInfoResponse> { Model = changeSelfInfoResponse, Response = response };
         }
+
+        public static ResponseModel<ChangeProfileInfoResponse> SendRequestChangeClientProfileInfoPatch(string industry, string locationName, string locationTimezone, string token)
+        {
+            var client = new RestClient(" https://api.newbookmodels.com/api/v1/client/profile/");
+            var request = new RestRequest(Method.PATCH);
+            var changeProfileInfoModel = new Dictionary<string, string>
+            {
+                { "industry", industry },
+                { "location_name", locationName },
+                { "location_timezone", locationTimezone },
+            };
+
+            request.AddHeader("content-type", "application/json");
+            request.AddHeader("authorization", token);
+            request.AddJsonBody(changeProfileInfoModel);
+            request.RequestFormat = DataFormat.Json;
+
+            var response = client.Execute(request);
+            var changePriofileInfoResponse = JsonConvert.DeserializeObject<ChangeProfileInfoResponse>(response.Content);
+
+            return new ResponseModel<ChangeProfileInfoResponse> { Model = changePriofileInfoResponse, Response = response };
+        }
     }
 
     public class ResponseModel<T>

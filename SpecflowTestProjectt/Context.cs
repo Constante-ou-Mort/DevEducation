@@ -14,5 +14,6 @@
         public static string ChangedClientSelfInfoResponseModel = "ChangedClientSelfInfoResponseModel";
         public static string ExpectedFirstname = "Expected First name";
         public static string ExpectedLastname = "Expected Last name";
+        public static string ChangeProfileInfoResponse = "Change Profile Info Response";
     }
 }
