@@ -50,9 +50,9 @@ namespace SpecflowTestProject.Steps.UI
         }
 
         [When(@"I fill the (.*) in email")]
-        public void WhenIFillTheEmail(string lastName)
+        public void WhenIFillTheEmail(string email)
         {
-            _singUpPage.SetEmail(lastName);
+            _singUpPage.SetEmail(email);
         }
 
         [When(@"I fill the (.*) in password")]

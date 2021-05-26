@@ -27,9 +27,6 @@ namespace SpecflowTestProject.Steps.API.Models
         [JsonProperty("email_verified")]
         public bool EmailVerified { get; set; }
 
-        [JsonProperty("client_profile")]
-        public ClientProfile ClientProfile { get; set; }
-
         [JsonProperty("has_password")]
         public bool HasPassword { get; set; }
 

@@ -50,7 +50,7 @@ namespace SpecflowTestProject.Steps.API
             public IRestResponse Response { get; set; }
         }
 
-        [When(@"I send valid registration request ")]
+        [When(@"I send valid registration request")]
         public void WhenISendValidRegistrationReques()
         {
             var responseSignUpModel = CreateUserViaApi();

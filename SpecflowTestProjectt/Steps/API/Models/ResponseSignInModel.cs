@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace SpecflowTestProject.Steps.API.Models
 {
-    public class ClientAuthModel
+    class ResponseSignInModel
     {
-        [JsonProperty("user")]
-        public User User { get; set; }
-
         [JsonProperty("token_data")]
         public TokenData TokenData { get; set; }
     }
-}
 }

@@ -23,18 +23,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Features\InvalidLogin.feature.cs">
+    <Compile Update="Features\ChangeEmailAPI.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Update="Features\Registration.feature.cs">
+    <Compile Update="Features\ChangeNumberAPI.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\InvalidLogin.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Features\RegistrationAPI.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Features\SignInAPI.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\ChangeEmailAPI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ChangeEmailAPI.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\InvalidLogin.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>InvalidLogin.feature.cs</LastGenOutput>
@@ -46,6 +56,14 @@
     <SpecFlowFeatureFiles Update="Features\RegistrationAPI.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RegistrationAPI.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\ChangeNumberAPI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ChangeNumberAPI.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\SignInAPI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SignInAPI.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
   </ItemGroup>
 
