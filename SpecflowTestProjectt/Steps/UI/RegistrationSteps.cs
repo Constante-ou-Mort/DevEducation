@@ -1,4 +1,4 @@
-﻿using SpecflowTestProject.RegistrationPage;
+﻿using SpecflowTestProject.Pages;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
 using TechTalk.SpecFlow;
@@ -13,13 +13,13 @@ namespace SpecflowTestProject.Steps.UI
     public class RegistrationSteps
     {
         private readonly ScenarioContext _scenarioContext;
-        private readonly RegistrationPage.RegistrationPage _registrationPage;
+        private readonly RegistrationPage _registrationPage;
 
         public RegistrationSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             var webDriver = _scenarioContext.Get<IWebDriver>(Context.WebDriver);
-            _registrationPage = new RegistrationPage.RegistrationPage(webDriver);
+            _registrationPage = new RegistrationPage(webDriver);
         }
         
         [Given(@"Sign up page is opened")]
