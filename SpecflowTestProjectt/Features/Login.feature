@@ -28,7 +28,7 @@ Scenario Outline: It is impossible to login in NewBookModels with invalid data
     When I login with data
       | email   | password   |
       | <email> | <password> |
-    Then Error massage with text 'message' for email field
+    Then Error with text <message> showed
 
     Examples:
       | email      | password | message       |

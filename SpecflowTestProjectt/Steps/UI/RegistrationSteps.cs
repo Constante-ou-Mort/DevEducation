@@ -5,6 +5,7 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using System.Linq;
 using System;
+using NUnit.Framework;
 
 namespace SpecflowTestProject.Steps.UI
 {
@@ -27,22 +28,22 @@ namespace SpecflowTestProject.Steps.UI
             _registrationPage.OpenPage();
         }
 
-        [When(@"I sign up with data")]
-        public void ISignUpWithData(Table table)
+        [When(@"I write this information on the first page")]
+        public void ISignUpWithDataOnFirstPage(Table table)
         {
-            var signInModels = table.CreateInstance<SignInModel>();
+            var signInModels = table.CreateInstance<SignInModelForFirstPage>();
 
             _registrationPage.SetFirstName(signInModels.FirstName);
             _registrationPage.SetSecondName(signInModels.LastName);
             _registrationPage.SetEmail();
             _registrationPage.SetPassword(signInModels.Password);
             _registrationPage.SetConfirmPassword(signInModels.ConfirmPassword);
-            _registrationPage.SetPhomeNumber(signInModels.Password);
+            _registrationPage.SetPhomeNumber(signInModels.Mobile);
 
             _registrationPage.ClickSubmit();
         }
 
-        public class SignInModel
+        public class SignInModelForFirstPage
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
@@ -50,20 +51,35 @@ namespace SpecflowTestProject.Steps.UI
             public string Password { get; set; }
             public string ConfirmPassword { get; set; }
             public string Mobile { get; set; }
+        }
 
-            //public SignInModel()
-            //{
-            //    Email = $"asda2sd2asd{DateTime.Now:ddyyyymmHHmmssffff}@asdasd.ert";
-            //}
+        [When(@"I write this information on the second page")]
+        public void ISignUpWithDataOnSecondPage(Table table)
+        {
+            var signInModels = table.CreateInstance<SignInModelForSecondPage>();
+
+            _registrationPage.SetCompanyName(signInModels.CompanyName);
+            _registrationPage.SetCompanySite(signInModels.CompanyUrl);
+            _registrationPage.SetLocationField(signInModels.Address);
+            _registrationPage.SetIndustryLocator();            
+
+            _registrationPage.ClickSubmit();
+        }
+
+        public class SignInModelForSecondPage
+        {
+            public string CompanyName { get; set; }
+            public string CompanyUrl { get; set; }
+            public string Address { get; set; }            
         }
 
         [Then(@"Next page is opened")]
         public void NextPageIsOpened()
         {
+            System.Threading.Thread.Sleep(1000);
+            var url = _registrationPage.GetUrl();
             _registrationPage.OpenPage();
+            Assert.AreEqual("https://newbookmodels.com/explore", url);
         }
-
-
-
     }
 }

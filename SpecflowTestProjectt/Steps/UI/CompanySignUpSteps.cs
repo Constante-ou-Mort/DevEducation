@@ -25,7 +25,7 @@ namespace SpecflowTestProject.Steps.UI
             Assert.IsTrue(_companySignUpPage.IsPageTitleVisible());
         }
         
-        [Then(@"Error massage with text '(.*)' for (email|password) field")]
+        [Then(@"Error with text (.*) showed")]
         public void ThenTheErrorMassageIsShowed(out string errorMessage)
         {
             if (_companySignUpPage.IsEmailErrorDisplayd(out errorMessage))

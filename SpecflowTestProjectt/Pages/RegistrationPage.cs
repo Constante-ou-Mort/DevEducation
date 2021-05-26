@@ -7,7 +7,7 @@ using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
 
-namespace SpecflowTestProject.RegistrationPage
+namespace SpecflowTestProject.Pages
 {
     
     public class RegistrationPage
@@ -121,6 +121,12 @@ namespace SpecflowTestProject.RegistrationPage
             System.Threading.Thread.Sleep(1000);
             _webDriver.FindElement(_secondPageSubmitButton).Click();  
             return this;
+        }
+
+        public string GetUrl()
+        {
+            var res = _webDriver.Url;
+            return res;
         }
     }
 }
