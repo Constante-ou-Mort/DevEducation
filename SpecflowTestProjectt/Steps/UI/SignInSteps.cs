@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using NewBookModelsApiTests.Models.Auth;
+﻿using NewBookModelsApiTests.Models.Auth;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace SpecflowTestProject.Steps.UI
 {
@@ -48,17 +47,32 @@ namespace SpecflowTestProject.Steps.UI
         [When(@"I login with data")]
         public void ILoginWithData(Table table)
         {
-            var loginModels = table.CreateSet<LoginModel>().ToList();
+            var email = table.Rows[0]["email"];
+            var password = table.Rows[0]["password"];
 
-            _singInPage.SetEmail(loginModels[0].Email);
-            _singInPage.SetPassword(loginModels[0].Password);
+            _singInPage.SetEmail(email);
+            _singInPage.SetPassword(password);
             _singInPage.ClickLoginButton();
+        }
+
+        [Then(@"Error message with text '(.*)' for (email|password) field")]
+        public void sdfasfdg(string message, string field)
+        {
+            var actualMEssage = "";
+
+            switch (field)
+            {
+                case "email":
+                    actualMEssage= GetErrorMessageForEmailField()
+            }
+
+            Assert.AreEqual(message,actualMEssage);
         }
 
         public class LoginModel
         {
             public string Email{ get; set; }
-            public string Password { get; set; }
+            public string Empasswordail { get; set; }
         }
 
         
