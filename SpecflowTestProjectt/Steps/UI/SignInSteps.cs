@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using NewBookModelsApiTests.ApiRequests.Auth;
 using NewBookModelsApiTests.Models.Auth;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace SpecflowTestProject.Steps.UI
 {
@@ -11,27 +11,45 @@ namespace SpecflowTestProject.Steps.UI
     public class SignInSteps
     {
         private readonly ScenarioContext _scenarioContext;
-        private readonly SingInPage _singInPage;
+        private readonly SignInPage _signInPage;
+        private readonly SignUpPage _signUpPage;
 
         public SignInSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             var webDriver = _scenarioContext.Get<IWebDriver>(Constants.WebDriver);
-            _singInPage = new SingInPage(webDriver);
+            _signInPage = new SignInPage(webDriver);
+            _signUpPage = new SignUpPage(webDriver);
         }
 
         [Given(@"Sign in page is opened")]
         public void GivenSignInPageIsOpened()
         {
-            _singInPage.OpenPage();
+            _signInPage.OpenPage();
         }
 
         [When(@"I login with email (.*) and password (.*)")]
         public void ILoginWithData(string email, string password)
         {
-            _singInPage.SetEmail(email);
-            _singInPage.SetPassword(password);
-            _singInPage.ClickLoginButton();
+            email = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Model.User.Email;
+            _signInPage.SetEmail(email);
+            _signInPage.SetPassword(Constants.Password);
+            _signInPage.ClickLoginButton();
+        }
+
+        [When(@"I login with invalid email (.*) and password (.*)")]
+        public void WhenILoginWithInvalidEmailAndPassword(string email, string password)
+        {
+            _signInPage.SetEmail(email);
+            _signInPage.SetPassword(password);
+            _signInPage.ClickLoginButton();
+        }
+
+
+        [Then(@"Successfully logged in NewBookModels as created client")]
+        public void ThenSuccessfullyLoggedInNewBookModelsAsCreatedClient()
+        {
+            Assert.IsTrue(_signUpPage.IsPageTitleVisible());
         }
     }
 }

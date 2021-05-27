@@ -12,7 +12,7 @@ namespace SeleniumTests
     public class SignInPageTests
     {
         private IWebDriver _webDriver;
-        private SingInPage _signInPage;
+        private SignInPage _signInPage;
 
         [SetUp]
         public void Setup()
@@ -22,7 +22,7 @@ namespace SeleniumTests
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(7);
             _webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(60);
             
-            _signInPage = new SingInPage(_webDriver);
+            _signInPage = new SignInPage(_webDriver);
         }
 
         [TearDown]

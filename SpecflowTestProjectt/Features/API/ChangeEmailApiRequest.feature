@@ -6,12 +6,8 @@ Scenario Outline: Update client email using Api request POST updating/updating-p
 	Given Change email to <email> using Api request POST updating/updating-profile
 	| email   |
 	| <email> |
-	Then <status_code> status code is recieved from the Api request
-	| status_code |
-	| OK     |
+	Then OK status code is recieved from the Api request
 	And message <message> is recieved from the Api request
 Examples:
-	| email     | message |
-	| uniqEmail | Created |
-
-	#узнать за уникальный мейл
+	| email     |
+	| uniqEmail |

@@ -21,17 +21,17 @@ namespace SpecflowTestProject.Steps.API
         }
 
         [Then(@"(.*) status code is recieved from the Api request")]
-        public void ThenStatusCodeIsRecievedFromTheApiRequest(string status, Table table)
+        public void ThenStatusCodeIsRecievedFromTheApiRequest(string status)
         {
             var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Response.StatusCode;
-            Assert.AreEqual(table.Rows[0]["status_code"], actualStatus.ToString());
+            Assert.AreEqual(status, actualStatus.ToString());
         }
 
         [Then(@"message (.*) is recieved from the Api request")]
-        public void MessageIsRecievedFromTheApiRequest(string status, Table table)
+        public void MessageIsRecievedFromTheApiRequest(string status)
         {
             var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Response.StatusDescription;
-            Assert.AreEqual(table.Rows[0]["message"], actualStatus);
+            Assert.AreEqual(status, actualStatus);
         }
     }
 }

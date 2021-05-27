@@ -2,8 +2,6 @@
 using NewBookModelsApiTests.ApiRequests.Client;
 using NewBookModelsApiTests.Models.Auth;
 using NUnit.Framework;
-using RestSharp;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using TechTalk.SpecFlow;
@@ -35,7 +33,7 @@ namespace SpecflowTestProject.Features.API
         }
         
         [Then(@"(.*) status code is recieved from the Api reques")]
-        public void ThenStatusCodeIsRecievedFromTheApiReques(string status, Table table)
+        public void ThenStatusCodeIsRecievedFromTheApiReques(string status)
         {
             var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>("Auth").Response.StatusCode;
 

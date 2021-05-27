@@ -2,13 +2,11 @@
 Feature: ChangePhoneNumberApiRequest
 
 @Positive @Post
-Scenario Outline: Update client phone number using Api request POST updating/updating-profile
-	Given Change phone to <phone_number> using Api request POST updating/updating-profile
+Scenario Outline: Update client phone number using Api request POST client/change_phone
+	When Change phone to <phone_number> using Api request POST client/change_phone
 	| phone_number   |
 	| <phone_number> |
-	Then <status_code> status code is recieved from the Api request
-	| status_code |
-	| OK          |
+	Then OK status code is recieved from the Api request
 Examples:
 	| phone_number |
 	| 1234567890   |

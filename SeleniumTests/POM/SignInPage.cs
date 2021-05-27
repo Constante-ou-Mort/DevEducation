@@ -2,7 +2,7 @@
 
 namespace SeleniumTests.POM
 {
-    public class SingInPage
+    public class SignInPage
     {
         private readonly IWebDriver _webDriver;
 
@@ -12,24 +12,24 @@ namespace SeleniumTests.POM
         private static readonly By _accountBlockMessage = By.XPath("//*[contains(@class, 'SignInForm__submitButton')]/../../div[contains(@class,'PageForm')][last()]");
         private static By _exceptionInvalidData = By.XPath("//*[text()='Invalid Email']");
 
-        public SingInPage(IWebDriver webDriver)
+        public SignInPage(IWebDriver webDriver)
         {
             _webDriver = webDriver;
         }
 
-        public SingInPage OpenPage()
+        public SignInPage OpenPage()
         {
             _webDriver.Navigate().GoToUrl("https://newbookmodels.com/auth/signin");
             return this;
         }
 
-        public SingInPage SetEmail(string email)
+        public SignInPage SetEmail(string email)
         {
             _webDriver.FindElement(_emailField).SendKeys(email);
             return this;
         }
 
-        public SingInPage SetPassword(string password)
+        public SignInPage SetPassword(string password)
         {
             _webDriver.FindElement(_passwordField).SendKeys(password);
             return this;
