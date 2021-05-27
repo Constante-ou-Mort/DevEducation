@@ -33,6 +33,6 @@ namespace SpecflowTestProject
         public void AfterScenario()
         {
             _scenarioContext.Get<IWebDriver>(Context.WebDriver).Quit();
-        }
+        } 
     }
 }

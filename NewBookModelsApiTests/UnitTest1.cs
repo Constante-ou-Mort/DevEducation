@@ -57,5 +57,27 @@ namespace NewBookModelsApiTests
             });
 
         }
+        [Test]
+        public void CheckedForSuccessfulFirstNameLastNameChange()
+        {
+            var user = new Dictionary<string, string>
+            {
+                 { "email", $"Will{DateTime.Now:ddyyyymmHHssmm}@gmail.com" },
+                { "first_name", "Will" },
+                { "last_name", "Smith" },
+                { "password", "123qweQWE1" },
+                { "phone_number", "3453453454" }
+            };
+            var createdUser = AuthRequests.SendRequestClientSignUpPost(user);
+            var _validNewFirstName = "Petro";
+            var _validNewSecondName = "Shevchenko";
+            var newPrimaryAccountHolderName = ClientRequests.SendRequestChangeFirstNammeLastNamePatch(_validNewFirstName, _validNewSecondName, createdUser.TokenData.Token);
+
+          // Assert.Multiple(() =>
+          // {
+          //     Assert.AreEqual(_validNewFirstName, newPrimaryAccountHolderName.FirstName);
+          //     Assert.AreEqual(_validNewSecondName, newPrimaryAccountHolderName.LastName);
+          // });
+        }
     }
 }

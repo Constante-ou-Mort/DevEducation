@@ -1,5 +1,11 @@
 ﻿using NewBookModelsApiTests.Models.Auth;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Bindings;
+using TechTalk.SpecFlow.Bindings.Reflection;
 
 namespace SpecflowTestProject
 {
@@ -23,6 +29,12 @@ namespace SpecflowTestProject
         public string GetCurrentClientEmail()
         {
             return _scenarioContext.Get<ClientAuthModel>(Context.User).User.Email;
+        }
+
+        [StepArgumentTransformation("new client email")]
+        public string GetNewClientEmail()
+        {
+            return $"Jonson{DateTime.Now:ddyyyymmHHmmssffff}@gmail.com";
         }
     }
 }

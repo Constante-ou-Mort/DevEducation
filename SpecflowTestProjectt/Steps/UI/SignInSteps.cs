@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using NewBookModelsApiTests.Models.Auth;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumTests.POM;
 using TechTalk.SpecFlow;
@@ -38,21 +39,46 @@ namespace SpecflowTestProject.Steps.UI
         {
             _singInPage.SetPassword(Constants.Password);
         }
-
+        [When(@"I login with data")]
+        public void ILoginWithData(Table table) 
+        {
+            var email = table.Rows[0]["email"];
+            var password = table.Rows[0]["password"];
+            _singInPage.SetEmail(email);
+            _singInPage.SetPassword(password);
+            _singInPage.ClickLoginButton();
+        }
         [When(@"I click Log in button")]
         public void WhenIClickLogInButton()
         {
             _singInPage.ClickLoginButton();
         }
 
-        [When(@"I login with data")]
-        public void ILoginWithData(Table table)
+        [When(@"I login with infalid data")]
+        public void ILoginWithInfalidData(Table table)
         {
             var loginModels = table.CreateSet<LoginModel>().ToList();
 
             _singInPage.SetEmail(loginModels[0].Email);
             _singInPage.SetPassword(loginModels[0].Password);
             _singInPage.ClickLoginButton();
+        }
+        [Then(@"Unsuccessfuly login in NewBookModels with invalid data")]
+        public void ThenSuccessfullyLoggedInNewBookModelAsCreatedClient()
+        {
+            Assert.IsTrue(_singInPage.IsSignInPageIsOpen());
+        }
+
+        [Then(@"(.*) invalid email message is displayed")]
+        public void ThenInvalidEmailMessageIsDisplayed(string messageEmail)
+        {
+            Assert.AreEqual(messageEmail, _singInPage.GetInvalidEmailMessage());
+        }
+
+        [Then(@"(.*) invalid password message is displayed")]
+        public void ThenInvalidPasswordMessageIsDisplayed(string messagepassword)
+        {
+            Assert.AreEqual(messagepassword, _singInPage.GetInvalidPasswordMessage());
         }
 
         public class LoginModel
