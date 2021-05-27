@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using SeleniumTests.POM;
+using System;
 
 namespace SpecflowTestProject.Features
 {
@@ -28,7 +29,7 @@ namespace SpecflowTestProject.Features
         {
             _singUpPage.SetFirstName(table.Rows[0]["name"]);
             _singUpPage.SetLastName(table.Rows[0]["last_name"]);
-            _singUpPage.SetEmail(table.Rows[0]["email"]);
+            _singUpPage.SetEmail($"asda2sd2asd{DateTime.Now:ddyyyymmHHmmssffff}@asdasd.ert");
             _singUpPage.SetPassword(table.Rows[0]["password"]);
             _singUpPage.SetPhoneNumber(table.Rows[0]["phone_number"]);
 

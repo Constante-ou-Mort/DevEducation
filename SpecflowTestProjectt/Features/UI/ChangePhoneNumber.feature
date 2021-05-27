@@ -4,8 +4,8 @@ Feature: ChangePhoneNumber
   As a client of NewBookModels
   I want update my profile in NewBookModels
 
-@Positive
-Scenario Outline: Change phone number with valid data
+@positive
+Scenario Outline: It is possible to change phone number with valid data
 	Given Client is created
 	And Update Profile page is opened
 	When I change phone with data on Update Profile page

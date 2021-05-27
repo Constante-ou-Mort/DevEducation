@@ -18,7 +18,7 @@ namespace SpecflowTestProject.Features
             _scenarioContext = scenarioContext;
         }
 
-        [Given(@"Create client using POST method registration/registration-client with valid data")]
+        [When(@"I create client using POST method registration/registration-client with valid data")]
         public void GivenCreateClientUsingPOSTMethodRegistrationRegistration_ClientWithValidData()
         {
             var createdUser = AuthRequests.SendRequestClientSignUpPost(new Dictionary<string, string>

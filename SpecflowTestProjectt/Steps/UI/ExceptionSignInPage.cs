@@ -24,6 +24,5 @@ namespace SpecflowTestProject.Steps.UI
         {
             Assert.AreEqual(message, _signInPage.GetExceptionInvalidData());
         }
-
     }
 }

@@ -4,7 +4,7 @@ Feature: UpdateProfile
   As a client of NewBookModels
   I want update my profile in NewBookModels
 
-@Positive 
+@positive 
 Scenario Outline: Update GeneralInfo with valid data
 	Given Client is created
 	And Update Profile page is opened

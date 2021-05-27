@@ -17,12 +17,13 @@ namespace SpecflowTestProject.Features.API
             _scenarioContext = scenarioContext;
         }
 
-        [Given(@"Change email to (.*) using Api request POST updating/updating-profile")]
-        public void GivenChangeGeneralInformationUsingApiRequestPOSTUpdatingUpdating_Profile(string email, Table table)
+        [When(@"I change email to (.*) using Api request POST client/change_email")]
+        public void GivenChangeGeneralInformationUsingApiRequestPOSTClientChange_Email(string email, Table table)
         {
-            var user = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Model.TokenData.Token; 
+            var user = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Model.TokenData.Token;
+            email = $"asda2sd2asd{DateTime.Now:ddyyyymmHHmmssffff}@asdasd.ert";
 
-            var changeInfo = ClientRequests.SendRequestChangeClientEmailPost(Constants.Password, table.Rows[0]["email"], user);
+            var changeInfo = ClientRequests.SendRequestChangeClientEmailPost(Constants.Password, email, user);
             _scenarioContext[Constants.User] = changeInfo;
         }
     }

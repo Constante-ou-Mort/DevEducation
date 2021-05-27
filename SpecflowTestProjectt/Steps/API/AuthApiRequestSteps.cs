@@ -18,7 +18,7 @@ namespace SpecflowTestProject.Features.API
             _scenarioContext = scenarioContext;
         }
 
-        [Given(@"Authorizate existing client using Api request POST auth/auth-client")]
+        [When(@"I authorize as an existing client using Api request POST auth/auth-client")]
         public void GivenAuthorizateExistingClientUsingApiRequestPOSTAuthAuth_Client()
         {
             var userData = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Model.User;
@@ -30,14 +30,6 @@ namespace SpecflowTestProject.Features.API
 
             var authrequest = ClientRequests.SendRequestClientSignInPost(user);
             _scenarioContext.Add("Auth", authrequest);
-        }
-        
-        [Then(@"(.*) status code is recieved from the Api reques")]
-        public void ThenStatusCodeIsRecievedFromTheApiReques(string status)
-        {
-            var actualStatus = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>("Auth").Response.StatusCode;
-
-            Assert.AreEqual(HttpStatusCode.OK, actualStatus);
         }
     }
 }

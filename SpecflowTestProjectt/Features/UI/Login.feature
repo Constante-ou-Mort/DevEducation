@@ -5,7 +5,7 @@ Feature: Login
 	I want to be logged in NewBookModels
 
 	#не нашла метод для трансформации, поэтому в фф креды описаны так
-@Positive
+@positive
 Scenario Outline: It is possible to login in NewBookModels with valid data
 	Given Client is created
 	And Sign in page is opened

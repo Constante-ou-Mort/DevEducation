@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumTests.PageObject;
-using System;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestProject.Features.UI

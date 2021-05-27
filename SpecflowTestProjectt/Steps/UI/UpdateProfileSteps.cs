@@ -2,7 +2,6 @@
 using NewBookModelsApiTests.Models.Auth;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using SeleniumTests.PageObject;
 using System;
 using TechTalk.SpecFlow;

@@ -36,20 +36,5 @@ namespace SpecflowTestProject
         {
             _scenarioContext.Get<IWebDriver>(Constants.WebDriver).Quit();
         }
-
-        [BeforeScenario("ChangeEmail", "ChangePhone", "Authorization")]
-        public void BeforeScenarioApi()
-        {
-            var createdUser = AuthRequests.SendRequestClientSignUpPost(new Dictionary<string, string>
-            {
-                {"email", $"asda2sd2asd{DateTime.Now:ddyyyymmHHmmssffff}@asdasd.ert"},
-                {"first_name", "asdasdasd"},
-                {"last_name", "asdasdasd"},
-                {"password", Constants.Password},
-                {"phone_number", "3453453454"}
-            });
-
-            _scenarioContext.Add(Constants.User, createdUser);
-        }
     }
 }

@@ -45,7 +45,6 @@ namespace SpecflowTestProject.Steps.UI
             _signInPage.ClickLoginButton();
         }
 
-
         [Then(@"Successfully logged in NewBookModels as created client")]
         public void ThenSuccessfullyLoggedInNewBookModelsAsCreatedClient()
         {

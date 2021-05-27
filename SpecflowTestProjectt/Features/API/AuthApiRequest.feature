@@ -1,8 +1,10 @@
-﻿@Authorization @Api
+﻿@authorization @api
 Feature: AuthApiRequest
 	Simple calculator for adding two numbers
 
-@Positive @Post
-Scenario Outline: Authorizate existing client using Api request POST auth/auth-client
-	Given Authorizate existing client using Api request POST auth/auth-client
-	Then OK status code is recieved from the Api reques
+@positive @postMethod
+Scenario: Authorizate existing client using Api request POST auth/auth-client
+	Given Client is created
+	When I authorize as an existing client using Api request POST auth/auth-client
+	Then Created status code is recieved from the Api request
+	And message Created is recieved from the Api request
