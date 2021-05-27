@@ -3,25 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstLesson", "FirstLesson.csproj", "{C9AF4693-DC24-42B5-AF5B-C4EE2B05144F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson6", "Lesson6\Lesson6.csproj", "{6E1967FF-B564-4FF7-87F1-AFDAD329FF33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson6", "..\Lesson6\Lesson6.csproj", "{6E1967FF-B564-4FF7-87F1-AFDAD329FF33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson6Practice", "Lesson6Practice\Lesson6Practice.csproj", "{70C02F7C-84D7-4DE0-998D-D2C36303FB29}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson6Practice", "..\Lesson6Practice\Lesson6Practice.csproj", "{70C02F7C-84D7-4DE0-998D-D2C36303FB29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson7", "Lesson7\Lesson7.csproj", "{D1FD5440-69B4-42A0-9C9E-7C123A8D37D1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson7", "..\Lesson7\Lesson7.csproj", "{D1FD5440-69B4-42A0-9C9E-7C123A8D37D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transformers", "CarFactory\Transformers.csproj", "{6AB7FD31-9C92-4C40-B2A8-4578A7F45AEA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transformers", "..\CarFactory\Transformers.csproj", "{6AB7FD31-9C92-4C40-B2A8-4578A7F45AEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumTests", "SeleniumTests\SeleniumTests.csproj", "{9D4AC727-30DB-48C1-831F-9279EB62B1F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transformers.Tests", "Transformers.Tests\Transformers.Tests.csproj", "{B4EE6446-9E27-4BA8-83CD-69457602194F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBookModelsApiTests", "NewBookModelsApiTests\NewBookModelsApiTests.csproj", "{F74AD326-EDBA-4F13-8FCC-1C7902F15B95}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumTests", "..\SeleniumTests\SeleniumTests.csproj", "{9D4AC727-30DB-48C1-831F-9279EB62B1F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecflowTestProject", "SpecflowTestProjectt\SpecflowTestProject.csproj", "{C0733839-90EA-492A-BFB2-717F54AAB6B5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBookModelsApiTests", "..\NewBookModelsApiTests\NewBookModelsApiTests.csproj", "{F74AD326-EDBA-4F13-8FCC-1C7902F15B95}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecflowTestProject", "..\SpecflowTestProjectt\SpecflowTestProject.csproj", "{C0733839-90EA-492A-BFB2-717F54AAB6B5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQL.Tests", "..\SQL.Tests\SQL.Tests.csproj", "{B4A2D419-8F20-4BEE-950D-9835A9383D18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQL.Tests", "SQL.Tests\SQL.Tests.csproj", "{B4A2D419-8F20-4BEE-950D-9835A9383D18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
