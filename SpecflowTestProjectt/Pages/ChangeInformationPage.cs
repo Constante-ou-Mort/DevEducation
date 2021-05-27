@@ -10,11 +10,9 @@ using WebDriverManager.Helpers;
 namespace SpecflowTestProject.Pages
 {
 
-
     public class ChangeInformationPage
     {
-
-        private readonly IWebDriver _webDriver;
+        public IWebDriver _webDriver;
 
         private static readonly By _changeMailButtonLocator = By.XPath("(//div[@class = 'edit-switcher__icon_type_edit'])[2]");
         private static readonly By _emailFieldLocator = By.XPath("//input[@placeholder = 'Enter E-mail']");
@@ -55,6 +53,12 @@ namespace SpecflowTestProject.Pages
         {
             _webDriver.FindElement(_saveChangesForEmailButton).Click();
             return this;
+        }
+
+        public string GetSettedEmail()
+        {
+            var res = _webDriver.FindElement(_emailFieldLocator).Text;
+            return res;
         }
     }
 }

@@ -6,6 +6,7 @@ using System;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
+using OpenQA.Selenium.Interactions;
 
 namespace SpecflowTestProject.Pages
 {
@@ -13,6 +14,7 @@ namespace SpecflowTestProject.Pages
     public class RegistrationPage
     {
         public IWebDriver _webDriver;
+
         private static readonly By _firstNameLocator = By.CssSelector("[name = 'first_name']");
         private static readonly By _secondNameLocator = By.CssSelector("[name = 'last_name']");
         private static readonly By _emailLocator = By.CssSelector("[name = 'email']");
@@ -28,6 +30,8 @@ namespace SpecflowTestProject.Pages
         private static readonly By _industryLocator = By.CssSelector("[name = 'industry']");
         private static readonly By _industryOptionLocator = By.CssSelector("[role = 'option']");
         private static readonly By _secondPageSubmitButton = By.CssSelector("[type = 'submit']");
+
+        
         public string MailGenerator()
         {
             DateTime dataTime = DateTime.Now;
@@ -104,6 +108,13 @@ namespace SpecflowTestProject.Pages
         public RegistrationPage SetLocationField(string locationField)
         {
             _webDriver.FindElement(_locationFieldLocator).SendKeys(locationField);
+            System.Threading.Thread.Sleep(300);
+
+            _webDriver.FindElement(_companyNameLocator).SendKeys("");
+            System.Threading.Thread.Sleep(300);
+
+            _webDriver.FindElement(_locationFieldLocator).SendKeys("r");
+            
             _webDriver.FindElement(_locationClickLocation).Click();
             return this;
         }
@@ -111,7 +122,7 @@ namespace SpecflowTestProject.Pages
         public RegistrationPage SetIndustryLocator()
         {
             _webDriver.FindElement(_industryLocator).Click();
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(1000);
             _webDriver.FindElement(_industryOptionLocator).Click();
             return this;
         }
@@ -128,5 +139,9 @@ namespace SpecflowTestProject.Pages
             var res = _webDriver.Url;
             return res;
         }
+
+
+
+
     }
 }

@@ -5,7 +5,6 @@ using SeleniumTests.POM;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
-
 namespace SpecflowTestProject.Steps.UI
 {
     [Binding]

@@ -13,6 +13,5 @@ Scenario: It is possible to sign up to NewBookModels with valid data
 	| Den        | DenDen    | uniqueMail | QWEqwe123# | QWEqwe123#       | 4444444444 |
 	And I write this information on the second page
 	| company_name | company_url | Address | Industry    |
-	| nice         | nice.com    | texas   | advertising |
+	| nice         | nice.com    | t | advertising |
 	Then Next page is opened
-

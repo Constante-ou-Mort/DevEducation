@@ -1,11 +1,11 @@
-﻿@nice
+﻿@change_information
 Feature: ChangeInformation
 	In order to change some information in my profile
 	As a user
 	I want to change information in any time easy and quickly
 
 @mytag
-Scenario: Add two numbers
+Scenario: I can change my email
 	Given Client is created
 	And The profile page is opened
 	When I click on icon to change my email
