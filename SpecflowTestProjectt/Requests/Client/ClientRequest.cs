@@ -3,7 +3,7 @@ using RestSharp;
 using System.Collections.Generic;
 using System.Net;
 
-namespace ModelBookAPITests
+namespace SpecflowTestProject
 {
     public class ClientRequest
     {
@@ -115,7 +115,7 @@ namespace ModelBookAPITests
             var client = new RestClient("https://api.newbookmodels.com/api/v1/client/profile/");
             var request = new RestRequest(Method.PATCH);
             var newCompanyLocationsModel = new Dictionary<string, string>
-            {
+            {                         
                 {"location_admin1_code", locationCode},
                 {"location_city_name", locationCity},
                 {"location_latitude", locationLatitude},

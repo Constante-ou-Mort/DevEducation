@@ -1,13 +1,12 @@
-﻿using NewBookModelsApiTests.Models.Auth;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace ModelBookAPITests
+namespace SpecflowTestProject
 {
     public class Responses
     {
         public string Email { get; set; }
     }
-
+    
     public class ChangePhoneNumberResponse
     {
         [JsonProperty("phone_number")]

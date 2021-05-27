@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace ModelBookAPITests
+namespace SpecflowTestProject
 {
     public class ChangeGeneralInformation
     {

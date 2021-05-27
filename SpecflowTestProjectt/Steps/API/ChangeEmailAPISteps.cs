@@ -1,6 +1,8 @@
-﻿using System;
+﻿using NewBookModelsApiTests.ApiRequests.Auth;
+using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
+using static NewBookModelsApiTests.ApiRequests.Client.ClientRequests;
 
 namespace SpecflowTestProject.Features.API
 {
@@ -14,14 +16,14 @@ namespace SpecflowTestProject.Features.API
             _scenarioContext = scenarioContext;
         }
 
-        [When(@"I change email to (.*) using Api request POST client/change_email")]
-        public void GivenChangeGeneralInformationUsingApiRequestPOSTClientChange_Email(string email, Table table)
+        [When(@"I change email to (.*) via API request")]
+        public void ChangeEmailViaAPIRequest(string email, Table table, ScenarioContext scenarioContext)
         {
-            var user = _scenarioContext.Get<AuthRequests.ResponseModel<ClientAuthModel>>(Constants.User).Model.TokenData.Token;
-            email = $"asda2sd2asd{DateTime.Now:ddyyyymmHHmmssffff}@asdasd.ert";
+            var user = _scenarioContext.Get<ChangeGeneralInformation>(Context.User);
+            var token = _scenarioContext.Tok
+            var changedEmail = ClientRequest.ChangeEmailRequest("Qweqwe123#", expectedEmail, newUser.TokenData.Token);
 
-            var changeInfo = ClientRequests.SendRequestChangeClientEmailPost(Constants.Password, email, user);
-            _scenarioContext[Constants.User] = changeInfo;
+            Assert.AreEqual(expectedEmail, changedEmail);
         }
     }
 }
