@@ -12,6 +12,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{C958C045-7B94-4655-838B-3C3C9003396C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HWProject", "HWProject", "{345596C9-8819-472A-99D1-CFA21E379E95}"
+	ProjectSection(SolutionItems) = preProject
+		allureConfig.json = allureConfig.json
+		specflow.json = specflow.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
